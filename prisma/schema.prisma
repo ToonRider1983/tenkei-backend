@@ -1,0 +1,302 @@
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model TD_Order {
+    Order_No        Int    @id @default(autoincrement())
+    Product_Grp_CD  String
+    Customer_CD     String
+    NAV_Name        String
+    Product_Name    String
+    NAV_Size        String
+    Product_Size    String
+    Tolerance       String
+    Customer_Draw   String
+    Company_Draw    String
+    Product_Draw    String
+    Quantity        String
+    Pd_Target_Qty   String
+    Pd_Complete_Qty String
+    I_Complete_Qty  String
+    Shipment_Qty    String
+    Pd_Split_Qty    String
+    Pd_Calc_Qty     String
+    NG_Qty          String
+    Unit_CD         String
+    Sales_Grp_CD    String
+    Sales_Person_CD String
+    Request1_CD     String
+    Request2_CD     String
+    Request3_CD     String
+    Material1       String
+    H_Treatment1    String
+    Material2       String
+    H_Treatment2    String
+    Material3       String
+    H_Treatment3    String
+    Material4       String
+    H_Treatment4    String
+    Material5       String
+    H_Treatment5    String
+
+    // Relations
+    procurements TD_Procure[]  @relation(fields: [Order_No], references: [Order_No])
+    plans        TD_Plan[]     @relation(fields: [Order_No], references: [Order_No])
+    results      TD_Result[]   @relation(fields: [Order_No], references: [Order_No])
+    costs        TD_Cost[]     @relation(fields: [Order_No], references: [Order_No])
+    schedules    TD_Schedule[] @relation(fields: [Order_No], references: [Order_No])
+    wips         TD_WIP[]      @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_Procure {
+    Order_No           Int      @id @default(autoincrement())
+    Procure_No         Int
+    OdPc_No            Int
+    OdPcLn_No          Int
+    Vendor_CAT         String
+    Vendor_CD          String
+    Pc_Name            String
+    Pc_Material        String
+    Pc_Mate_Docu       String
+    Temp_Price         Float
+    Price_CD           String
+    Unit_Price         Float
+    Pc_Qty             Int
+    Pc_Unit_CD         String
+    Pc_Person_CD       String
+    Pc_Date            DateTime
+    Pc_Req_Delivery    DateTime
+    Pc_Req_Delivery_CD String
+    Pc_Ans_Delivery    DateTime
+    Pc_Ans_Delivery_CD String
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_Plan {
+    Order_No      Int    @id @default(autoincrement())
+    Parts_No      Int
+    OdPt_No       Int
+    Parts_CD      String
+    Pt_Material   String
+    Pt_Qty        Int
+    Pt_Unit_CD    String
+    Pt_Split      String
+    Pt_Spare_Qty  Int
+    Pt_NG_Qty     Int
+    Pt_I_Comp_Qty Int
+    Connect_Od_No Int
+    Connect_Pt_No Int
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_Result {
+    Order_No         Int      @id @default(autoincrement())
+    Parts_No         Int
+    OdPt_No          Int
+    Rs_Reg_Date      DateTime @default(now())
+    Rs_Reg_Person_CD String
+    Rs_Upd_Date      DateTime @default(now())
+    Rs_Upd_Person_CD String
+    RPC1             String
+    RPC2             String
+    RPC3             String
+    RPC4             String
+    RPC5             String
+    RPC6             String
+    RPC7             String
+    RPC8             String
+    RPC9             String
+    RPC10            String
+    RPC11            String
+    RPC12            String
+    RPC13            String
+    RPC14            String
+    RPC15            String
+    RPC16            String
+    RPC17            String
+    RPC18            String
+    RPC19            String
+    RPC20            String
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_Cost {
+    Order_No         Int      @id @default(autoincrement())
+    Parts_No         Int
+    Cost_No          Int
+    Process_No       Int
+    OdPt_No          Int
+    OdPtCs_No        Int
+    OdPtPr_No        Int
+    CMC              String
+    CMT              String
+    CPC              String
+    CPT              String
+    CPD              String
+    CPN              String
+    Cs_Progress_CD   String
+    Cs_Complete_Date DateTime @default(now())
+    Cs_Complete_Qty  Int
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_Schedule {
+    Order_No         Int      @id @default(autoincrement())
+    Parts_No         Int
+    OdPt_No          Int
+    Schedule_No      Int
+    Sc_Choice        String
+    Schedule_CD      String
+    Sc_Reg_Date      DateTime @default(now())
+    Sc_Reg_Person_CD String
+    Sc_Upd_Date      DateTime @default(now())
+    Sc_Upd_Person_CD String
+    PPD1             String
+    PPD2             String
+    PPD3             String
+    PPD4             String
+    PPD5             String
+    PPD6             String
+    PPD7             String
+    PPD8             String
+    PPD9             String
+    PPD10            String
+    PPD11            String
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+model TD_WIP {
+    Order_No   Int    @id @default(autoincrement())
+    Parts_No   Int
+    Process_No Int
+    OdPt_No    Int
+    OdPtPr_No  Int
+    PPG        String
+    PPC        String
+    PMT        String
+    PPT        String
+    T_Type     String
+    P_Type     String
+    S_Type     String
+    PPD        String
+    PML        String
+    PPL        String
+    INN        String
+    RPD        String
+    RMT        String
+    RPT        String
+    RPN        String
+    ASP        String
+    Now_No     String
+    WIP_CAT1   String
+    WIP_CAT2   String
+
+    // Relations
+    order TD_Order @relation(fields: [Order_No], references: [Order_No])
+}
+
+// Lookup tables like TM_Process can remain without relations
+model TM_Process {
+    Process_CD     String @id
+    Change_CD      String
+    ProcessG_CD    String
+    ResourceG_CD   String
+    ManageG_CD     String
+    Manhour_Calc   String
+    Days_Calc      String
+    Process_Name   String
+    Process_Abb    String
+    Process_Symbol String
+    Process_Mark   String
+    Use            String
+    For_Plan       String
+    For_Info       String
+    Graph          String
+    List           String
+    Outside_On     String
+    Outside_Off    String
+    End            String
+    Coefficient    String
+    M_Coefficient  String
+    P_Coefficient  String
+    Before         String
+}
+
+model TM_ProcessG {
+    ProcessG_CD     String @id
+    Change_CD       String
+    ManageG_CD      String
+    ProcessG_Name   String
+    ProcessG_Abb    String
+    ProcessG_Symbol String
+    ProcessG_Mark   String
+    Use             String
+    Use_Object      String
+    Graph           String
+    List            String
+    Coefficient     String
+    M_Coefficient   String
+    P_Coefficient   String
+    Std_M_CAT       String
+}
+
+model TM_ResourceG {
+    ResourceG_CD     String @id
+    Change_CD        String
+    ResourceG_Name   String
+    ResourceG_Abb    String
+    ResourceG_Symbol String
+    ResourceG_Mark   String
+    Us_Group_Mark    String
+    Use              String
+}
+
+model TM_Resource {
+    Resource_CD     String @id
+    Change_CD       String
+    ResourceG_CD    String
+    CostG_CD        String
+    ManageG_CD      String
+    Resource_Name   String
+    Resource_Abb    String
+    Resource_Symbol String
+    Resource_Mark   String
+    Use             String
+    End             String
+    M_Coefficient   String
+}
+
+model TM_CostG {
+    CostG_CD      String @id
+    Change_CD     String
+    CostG_Name    String
+    CostG_Abb     String
+    CostG_Symbol  String
+    CostG_Mark    String
+    Use           String
+    Coefficient   String
+    M_Coefficient String
+}
+
+model TM_WorkG {
+    WorkG_CD     String @id
+    WorkG_Name   String
+    WorkG_Abb    String
+    WorkG_Symbol String
+    WorkG_Mark   String
+}
