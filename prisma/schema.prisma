@@ -8,7 +8,7 @@ generator client {
 }
 
 model TD_Order {
-    Order_No        Int    @id @default(autoincrement())
+    Order_No        Int    @id @default(autoincrement()) // กำหนดคีย์หลักให้กับ Order_No
     Product_Grp_CD  String
     Customer_CD     String
     NAV_Name        String
@@ -45,12 +45,18 @@ model TD_Order {
     H_Treatment5    String
 
     // Relations
-    procurements TD_Procure[]  @relation(fields: [Order_No], references: [Order_No])
-    plans        TD_Plan[]     @relation(fields: [Order_No], references: [Order_No])
-    results      TD_Result[]   @relation(fields: [Order_No], references: [Order_No])
-    costs        TD_Cost[]     @relation(fields: [Order_No], references: [Order_No])
-    schedules    TD_Schedule[] @relation(fields: [Order_No], references: [Order_No])
-    wips         TD_WIP[]      @relation(fields: [Order_No], references: [Order_No])
+
+    TD_Procure TD_Procure[]
+
+    TD_Plan TD_Plan[]
+
+    TD_Result TD_Result[]
+
+    TD_Cost TD_Cost[]
+
+    TD_Schedule TD_Schedule[]
+
+    TD_WIP TD_WIP[]
 }
 
 model TD_Procure {
@@ -235,6 +241,12 @@ model TM_Process {
     M_Coefficient  String
     P_Coefficient  String
     Before         String
+
+    Resource TM_Resource @relation(fields: [Process_CD], references: [Resource_CD])
+
+    processGroup TM_ProcessG @relation(fields: [ProcessG_CD], references: [ProcessG_CD])
+
+    TM_ProcessG TM_ProcessG[] @relation("ProcessGroupProcesses")
 }
 
 model TM_ProcessG {
@@ -253,6 +265,10 @@ model TM_ProcessG {
     M_Coefficient   String
     P_Coefficient   String
     Std_M_CAT       String
+
+    processes TM_Process[] @relation("ProcessGroupProcesses")
+
+    TM_Process TM_Process[]
 }
 
 model TM_ResourceG {
@@ -279,6 +295,8 @@ model TM_Resource {
     Use             String
     End             String
     M_Coefficient   String
+
+    TM_Process TM_Process[]
 }
 
 model TM_CostG {
@@ -299,4 +317,259 @@ model TM_WorkG {
     WorkG_Abb    String
     WorkG_Symbol String
     WorkG_Mark   String
+
+    // One-to-Many relationship with TM_Worker
+    workers TM_Worker[] @relation("WorkGroupWorkers")
+
+    TM_Worker TM_Worker[]
+}
+
+model TM_Worker {
+    Worker_CD      String    @id
+    Worker_Pass    String
+    WorkerG_CD     String
+    WorkG_CD       String
+    Worker_Name    String
+    Worker_Abb     String
+    Worker_JPN     String
+    Access_Lv      Float
+    Worker_Level   String
+    Worker_Menu    String
+    Worker_Remark  String
+    SSMA_TimeStamp DateTime?
+
+    // Many-to-One relationship with TM_WorkG
+    workGroup TM_WorkG @relation(fields: [WorkG_CD], references: [WorkG_CD])
+
+    // One-to-Many relationship with TM_WorkerG
+    workerGroups TM_WorkerG[] @relation("WorkerWorkerGroups")
+
+    TM_WorkG TM_WorkG[] @relation("WorkGroupWorkers")
+}
+
+model TM_WorkerG {
+    WorkerG_CD     String @id
+    WorkerG_Name   String
+    WorkerG_Abb    String
+    WorkerG_Remark String
+
+    // Many-to-One relationship with TM_Worker
+    workers TM_Worker[] @relation("WorkerWorkerGroups")
+}
+
+model TM_User {
+    User_ID     String  @id
+    User_Name   String
+    User_Abb    String
+    User_Pass   String
+    User_Remark String
+    F0100       Boolean @default(false)
+    F0101       Boolean @default(false)
+    F0102       Boolean @default(false)
+    F0103       Boolean @default(false)
+    F0104       Boolean @default(false)
+    F0105       Boolean @default(false)
+    F0106       Boolean @default(false)
+    F0107       Boolean @default(false)
+    F0108       Boolean @default(false)
+    F0109       Boolean @default(false)
+    F0110       Boolean @default(false)
+    F0112       Boolean @default(false)
+    F0113       Boolean @default(false)
+    F0114       Boolean @default(false)
+    F0115       Boolean @default(false)
+    F0116       Boolean @default(false)
+    F0117       Boolean @default(false)
+    F0118       Boolean @default(false)
+    F0119       Boolean @default(false)
+    F0120       Boolean @default(false)
+    F0200       Boolean @default(false)
+    F0201       Boolean @default(false)
+    F0202       Boolean @default(false)
+    F0203       Boolean @default(false)
+    F0204       Boolean @default(false)
+    F0205       Boolean @default(false)
+    F0206       Boolean @default(false)
+    F0207       Boolean @default(false)
+    F0208       Boolean @default(false)
+    F0209       Boolean @default(false)
+    F0210       Boolean @default(false)
+    F0211       Boolean @default(false)
+    F0212       Boolean @default(false)
+    F0213       Boolean @default(false)
+    F0214       Boolean @default(false)
+    F0215       Boolean @default(false)
+    F0216       Boolean @default(false)
+    F0217       Boolean @default(false)
+    F0218       Boolean @default(false)
+    F0219       Boolean @default(false)
+    F0220       Boolean @default(false)
+    F0300       Boolean @default(false)
+    F0301       Boolean @default(false)
+    F0302       Boolean @default(false)
+    F0303       Boolean @default(false)
+    F0304       Boolean @default(false)
+    F0305       Boolean @default(false)
+    F0306       Boolean @default(false)
+    F0307       Boolean @default(false)
+    F0308       Boolean @default(false)
+    F0309       Boolean @default(false)
+    F0310       Boolean @default(false)
+    F0311       Boolean @default(false)
+    F0312       Boolean @default(false)
+    F0313       Boolean @default(false)
+    F0314       Boolean @default(false)
+    F0315       Boolean @default(false)
+    F0316       Boolean @default(false)
+    F0317       Boolean @default(false)
+    F0318       Boolean @default(false)
+    F0319       Boolean @default(false)
+    F0320       Boolean @default(false)
+    F0400       Boolean @default(false)
+    F0401       Boolean @default(false)
+    F0402       Boolean @default(false)
+    F0403       Boolean @default(false)
+    F0404       Boolean @default(false)
+    F0405       Boolean @default(false)
+    F0406       Boolean @default(false)
+    F0407       Boolean @default(false)
+    F0408       Boolean @default(false)
+    F0409       Boolean @default(false)
+    F0410       Boolean @default(false)
+    F0411       Boolean @default(false)
+    F0412       Boolean @default(false)
+    F0413       Boolean @default(false)
+    F0414       Boolean @default(false)
+    F0415       Boolean @default(false)
+    F0416       Boolean @default(false)
+    F0417       Boolean @default(false)
+    F0418       Boolean @default(false)
+    F0419       Boolean @default(false)
+    F0420       Boolean @default(false)
+    F0500       Boolean @default(false)
+    F0501       Boolean @default(false)
+    F0502       Boolean @default(false)
+    F0503       Boolean @default(false)
+    F0504       Boolean @default(false)
+    F0505       Boolean @default(false)
+    F0506       Boolean @default(false)
+    F0507       Boolean @default(false)
+    F0508       Boolean @default(false)
+    F0509       Boolean @default(false)
+    F0510       Boolean @default(false)
+    F0511       Boolean @default(false)
+    F0512       Boolean @default(false)
+    F0513       Boolean @default(false)
+    F0514       Boolean @default(false)
+    F0515       Boolean @default(false)
+    F0516       Boolean @default(false)
+    F0517       Boolean @default(false)
+    F0518       Boolean @default(false)
+    F0519       Boolean @default(false)
+    F0520       Boolean @default(false)
+    F0600       Boolean @default(false)
+    F0601       Boolean @default(false)
+    F0602       Boolean @default(false)
+    F0603       Boolean @default(false)
+    F0604       Boolean @default(false)
+    F0605       Boolean @default(false)
+    F0606       Boolean @default(false)
+    F0607       Boolean @default(false)
+    F0608       Boolean @default(false)
+    F0609       Boolean @default(false)
+    F0610       Boolean @default(false)
+    F0611       Boolean @default(false)
+    F0612       Boolean @default(false)
+    F0613       Boolean @default(false)
+    F0614       Boolean @default(false)
+    F0615       Boolean @default(false)
+    F0616       Boolean @default(false)
+    F0617       Boolean @default(false)
+    F0618       Boolean @default(false)
+    F0619       Boolean @default(false)
+    F0620       Boolean @default(false)
+    F0700       Boolean @default(false)
+    F0701       Boolean @default(false)
+    F0702       Boolean @default(false)
+    F0703       Boolean @default(false)
+    F0704       Boolean @default(false)
+    F0705       Boolean @default(false)
+    F0706       Boolean @default(false)
+    F0707       Boolean @default(false)
+    F0708       Boolean @default(false)
+    F0709       Boolean @default(false)
+    F0710       Boolean @default(false)
+    F0711       Boolean @default(false)
+    F0712       Boolean @default(false)
+    F0713       Boolean @default(false)
+    F0714       Boolean @default(false)
+    F0715       Boolean @default(false)
+    F0716       Boolean @default(false)
+    F0717       Boolean @default(false)
+    F0718       Boolean @default(false)
+    F0719       Boolean @default(false)
+    F0720       Boolean @default(false)
+    F0800       Boolean @default(false)
+    F0801       Boolean @default(false)
+    F0802       Boolean @default(false)
+    F0803       Boolean @default(false)
+    F0804       Boolean @default(false)
+    F0805       Boolean @default(false)
+    F0806       Boolean @default(false)
+    F0807       Boolean @default(false)
+    F0808       Boolean @default(false)
+    F0809       Boolean @default(false)
+    F0810       Boolean @default(false)
+    F0811       Boolean @default(false)
+    F0812       Boolean @default(false)
+    F0813       Boolean @default(false)
+    F0814       Boolean @default(false)
+    F0815       Boolean @default(false)
+    F0816       Boolean @default(false)
+    F0817       Boolean @default(false)
+    F0818       Boolean @default(false)
+    F0819       Boolean @default(false)
+    F0820       Boolean @default(false)
+    F0900       Boolean @default(false)
+    F0901       Boolean @default(false)
+    F0902       Boolean @default(false)
+    F0903       Boolean @default(false)
+    F0904       Boolean @default(false)
+    F0905       Boolean @default(false)
+    F0906       Boolean @default(false)
+    F0907       Boolean @default(false)
+    F0908       Boolean @default(false)
+    F0909       Boolean @default(false)
+    F0910       Boolean @default(false)
+    F0911       Boolean @default(false)
+    F0912       Boolean @default(false)
+    F0913       Boolean @default(false)
+    F0914       Boolean @default(false)
+    F0915       Boolean @default(false)
+    F0916       Boolean @default(false)
+    F0917       Boolean @default(false)
+    F0918       Boolean @default(false)
+    F0919       Boolean @default(false)
+    F0920       Boolean @default(false)
+    F1000       Boolean @default(false)
+    F1001       Boolean @default(false)
+    F1002       Boolean @default(false)
+    F1003       Boolean @default(false)
+    F1004       Boolean @default(false)
+    F1005       Boolean @default(false)
+    F1006       Boolean @default(false)
+    F1007       Boolean @default(false)
+    F1008       Boolean @default(false)
+    F1009       Boolean @default(false)
+    F1010       Boolean @default(false)
+    F1011       Boolean @default(false)
+    F1012       Boolean @default(false)
+    F1013       Boolean @default(false)
+    F1014       Boolean @default(false)
+    F1015       Boolean @default(false)
+    F1016       Boolean @default(false)
+    F1017       Boolean @default(false)
+    F1018       Boolean @default(false)
+    F1019       Boolean @default(false)
+    F1020       Boolean @default(false)
 }
