@@ -357,6 +357,7 @@ model TM_WorkerG {
     workers TM_Worker[] @relation("WorkerWorkerGroups")
 }
 
+// user data mock up table
 model TM_User {
     User_ID     String  @id
     User_Name   String

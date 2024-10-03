@@ -96,9 +96,9 @@ exports.login = async (req, res, next) => {
         const payload = { User_ID: existingUser.User_ID };
         const accessToken = jwt.sign(
             payload,
-            process.env.JWT_SECRET_KEY || "defaultRandomBaka",
+            process.env.JWT_SECRET_KEY || "defaultRandom",
             {
-                expiresIn: process.env.JWT_EXPIRE || "1h", // กำหนดเวลาหมดอายุของ token
+                expiresIn: process.env.JWT_EXPIRE || "6h", // กำหนดเวลาหมดอายุของ token
             }
         );
 
