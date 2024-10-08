@@ -48,7 +48,7 @@ exports.register = async (req, res, next) => {
 
         // สร้าง JSON Web Token
         const token = jwt.sign({ User_ID: newUser.User_ID }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
+            expiresIn: "6h",
         });
 
         // ส่งข้อมูลกลับ
