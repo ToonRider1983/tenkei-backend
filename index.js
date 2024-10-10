@@ -1,16 +1,21 @@
+require("dotenv").config();
 const express = require('express');
-const app = express();
-const port = 3000;
-
 const authRoute = require("./src/routes/auth-route");
+const orderRoute = require("./src/routes/order-route");
+const planRoute = require("./src/routes/plan-route");
 const logger = require('./src/middlewares/logger');
 
+const cors = require("cors");
+const app = express();
+
 app.use(express.json());
+app.use(cors());
 app.use(logger); // Apply the logger middleware
 
 
 app.use('/auth', authRoute);
+app.use('/order', orderRoute);
+app.use('/plan', planRoute);
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+const PORT = process.env.PORT || "4000";
+app.listen(PORT, () => console.log(`server running on port: ${PORT}`));

@@ -22,15 +22,11 @@ groups.forEach(group => {
 // รวม registerSchema กับ permissionsSchema
 const extendedRegisterSchema = registerSchema.append(permissionsSchema);
 
-module.exports = { registerSchema, extendedRegisterSchema };
-
-// สร้าง Joi schema สำหรับการล็อกอิน
+// สร้าง schema สำหรับการล็อกอิน
 const loginSchema = Joi.object({
     User_ID: Joi.string().required(),
     User_Pass: Joi.string().required(),
 });
-
-module.exports = { loginSchema };
 
 // สร้าง schema สำหรับการอัปเดต permissions
 const updatePermissionsSchema = Joi.object({
@@ -38,4 +34,5 @@ const updatePermissionsSchema = Joi.object({
     permissions: Joi.object(permissionsSchema).optional() // สำหรับกำหนดค่าเฉพาะเจาะจง
 });
 
-module.exports = { updatePermissionsSchema };
+// Export ทั้งหมดในครั้งเดียว
+module.exports = { registerSchema, extendedRegisterSchema, loginSchema, updatePermissionsSchema };
