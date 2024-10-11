@@ -92,15 +92,15 @@ exports.login = async (req, res, next) => {
             return next(createError(400, "Invalid credentials.")); // ข้อความที่ถูกต้อง
         }
 
-        // สร้าง JSON Web Token
-        const payload = { User_ID: existingUser.User_ID };
-        const accessToken = jwt.sign(
-            payload,
-            process.env.JWT_SECRET_KEY || "defaultRandom",
-            {
-                expiresIn: process.env.JWT_EXPIRE || "6h", // กำหนดเวลาหมดอายุของ token
-            }
-        );
+         // สร้าง JSON Web Token
+         const payload = { User_ID: existingUser.User_ID };
+         const accessToken = jwt.sign(
+             payload,
+             process.env.JWT_SECRET_KEY || ("defaultRandom"),
+             {
+                 expiresIn: process.env.JWT_EXPIRE || ("6h"), // กำหนดเวลาหมดอายุของ token
+             }
+         );
 
         // ลบรหัสผ่านออกจากข้อมูลผู้ใช้ก่อนส่งกลับ
         delete existingUser.User_Pass;
