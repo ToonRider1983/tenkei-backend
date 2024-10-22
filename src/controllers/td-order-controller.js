@@ -156,29 +156,13 @@ exports.editOrder = async (req, res, next) => {
     // ล็อกข้อมูลที่ต้องการแก้ไข
     console.log("Order Data to be edited:", orderData);
 
-    // ตรวจสอบค่าของ Customer_Draw และ Company_Draw
-    if (!orderData.Customer_Draw && !orderData.Company_Draw) {
-      // หากไม่มีค่าให้ตั้งค่า Product_Draw เป็น null
-      orderData.Product_Draw = null;
-    } else if (orderData.Customer_Draw && orderData.Company_Draw) {
-      // หากมีทั้งสองค่าให้ตั้งค่า Product_Draw
-      orderData.Product_Draw = `Com:${orderData.Company_Draw}/Cus:${orderData.Customer_Draw}`;
-    } else if (orderData.Customer_Draw) {
-      // หากมีแค่ Customer_Draw
-      orderData.Product_Draw = `Cus:${orderData.Customer_Draw}`;
-    } else if (orderData.Company_Draw) {
-      // หากมีแค่ Company_Draw
-      orderData.Product_Draw = `Com:${orderData.Company_Draw}`;
-    }
+  
 
     // อัปเดตข้อมูลในฐานข้อมูล
     const updatedOrder = await prisma.tD_Order.update({
       where: { Order_No: orderData.Order_No }, // ระบุเงื่อนไขในการค้นหา
       data: {
         ...orderData, // ข้อมูลที่ต้องการแก้ไข
-        Pd_Target_Qty: orderData.Quantity, // อัปเดต Pd_Target_Qty
-        NAV_Name: orderData.Product_Name, // อัปเดต NAV_Name
-        NAV_Size: orderData.Product_Size,
         Od_Upd_Date: formattedDate, // อัปเดต NAV_Size
       },
     });
