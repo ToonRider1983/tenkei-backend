@@ -150,10 +150,7 @@ exports.editOrder = async (req, res, next) => {
 
     // ข้อมูลที่ตรวจสอบแล้วสามารถใช้งานได้
     const orderData = value;
-    // ตั้งค่า Od_Upd_Date เป็นเวลาปัจจุบัน
-    const currentDate = new Date(); // วันที่ปัจจุบัน
-    const formattedDate = formatDate(currentDate);
-    // ล็อกข้อมูลที่ต้องการแก้ไข
+  
     console.log("Order Data to be edited:", orderData);
 
   
@@ -163,7 +160,6 @@ exports.editOrder = async (req, res, next) => {
       where: { Order_No: orderData.Order_No }, // ระบุเงื่อนไขในการค้นหา
       data: {
         ...orderData, // ข้อมูลที่ต้องการแก้ไข
-        Od_Upd_Date: formattedDate, // อัปเดต NAV_Size
       },
     });
 
