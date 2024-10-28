@@ -61,7 +61,7 @@ model TD_Order {
     Price_CD          String?
     Unit_Price        Float?
     Specific_CD       String?
-    Od_Progress_CD    Int?
+    Od_Progress_CD    String?
     Delivery_CD       String?
     Schedule_CD       String?
     Target_CD         String?
@@ -71,7 +71,7 @@ model TD_Order {
     Inspect_Docu      String?
     Send_Docu         String?
     Supple_Docu       String?
-    SI_Instructions   String?
+    Sl_Instructions   String?
     Pd_Instructions   String?
     Pd_Remark         String?
     I_Remark          String?
