@@ -217,29 +217,9 @@ exports.createOrder = async (req, res, next) => {
     // ล็อกข้อมูลที่ต้องการเพิ่ม
     console.log("Order Data to be created:", orderData);
 
-    // ตรวจสอบค่าของ Customer_Draw และ Company_Draw
-    if (!orderData.Customer_Draw && !orderData.Company_Draw) {
-      // หากไม่มีค่าให้ตั้งค่า Product_Draw เป็น null
-      orderData.Product_Draw = null;
-    } else if (orderData.Customer_Draw && orderData.Company_Draw) {
-      // หากมีทั้งสองค่าให้ตั้งค่า Product_Draw
-      orderData.Product_Draw = `Com:${orderData.Company_Draw}/Cus:${orderData.Customer_Draw}`;
-    } else if (orderData.Customer_Draw) {
-      // หากมีแค่ Customer_Draw
-      orderData.Product_Draw = `Cus:${orderData.Customer_Draw}`;
-    } else if (orderData.Company_Draw) {
-      // หากมีแค่ Company_Draw
-      orderData.Product_Draw = `Com:${orderData.Company_Draw}`;
-    }
-
-    // ดำเนินการเพิ่มคำสั่งซื้อในฐานข้อมูล
+  
     const newOrder = await prisma.tD_Order.create({ data: orderData });
 
-    // ตั้งค่า Od_Upd_Date เป็นเวลาปัจจุบัน
-    const currentDate = new Date(); // วันที่ปัจจุบัน
-    const formattedDate = formatDate(currentDate); // แปลงเป็นรูปแบบ dd/mm/yyyy
-
-    newOrder.Od_Upd_Date = formattedDate;
 
     // ตรวจสอบ Order_No และ Quantity
     if (!newOrder.Order_No) {
@@ -251,7 +231,7 @@ exports.createOrder = async (req, res, next) => {
     }
     newOrder.Pd_Target_Qty = newOrder.Quantity;
     newOrder.NAV_Name = newOrder.Product_Name;
-    // ส่งคำตอบกลับ
+    
     return res
       .status(201)
       .json({ message: "Order created successfully", order: newOrder });
