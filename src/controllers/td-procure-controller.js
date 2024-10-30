@@ -41,6 +41,7 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
         where: { Order_No: orderNo },
       });
   
+
       // หากไม่พบหมายเลขคำสั่งซื้อ ส่งข้อผิดพลาด
       if (!order) {
         return next(createError(404, "Order not found"));
@@ -55,6 +56,37 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
       });
     } catch (err) {
       console.error("Error searching order:", err);
+      return next(createError(500, "Internal Server Error"));
+    }
+  };
+
+  exports.createProcure = async (req, res, next) => {
+    try {
+      // ตรวจสอบข้อมูลที่ส่งเข้ามา
+      const { error, value } = procureSchema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+      }
+  
+      // ข้อมูลที่ตรวจสอบแล้วสามารถใช้งานได้
+      const procureData = value;
+  
+      // ล็อกข้อมูลที่ต้องการเพิ่ม
+      console.log("Procure Data to be created:", procureData);
+  
+    
+      const newProcure = await prisma.tD_Procure.create({ data: procureData });
+  
+  
+
+
+      
+      return res
+        .status(201)
+        .json({ message: "Order created successfully", procure: newProcure });
+    } catch (err) {
+      // ล็อกข้อผิดพลาดเพื่อการตรวจสอบ
+      console.error("Error creating order:", err);
       return next(createError(500, "Internal Server Error"));
     }
   };
