@@ -39,4 +39,7 @@ const procureSchema = Joi.object({
     PC_NAV_Upd_Date: Joi.date().allow(null), // วันที่อัปเดต NAV
     Pc_Line_No: Joi.number().integer().allow(null), // หมายเลขบรรทัด (Line Number)
   });
+
+
+  
   module.exports = {procureSchema};
