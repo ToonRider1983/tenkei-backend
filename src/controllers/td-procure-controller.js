@@ -15,7 +15,7 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
       }
   
       // ดึงหมายเลขคำสั่งซื้อจากคำขอ
-      let { Order_No: orderNo } = req.body; // ใช้ destructuring เพื่อดึง Order_No
+      let { Order_No: orderNo} = req.body; // ใช้ destructuring เพื่อดึง Order_No
   
       // ตรวจสอบว่า orderNo เป็นสตริงและมีความยาวที่เหมาะสม
       if (typeof orderNo !== "string" || orderNo.length < 10) {
@@ -51,7 +51,7 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
       return res.status(200).json({
         status: "success",
         data: {
-          order: order,
+          procure: order,
         },
       });
     } catch (err) {
@@ -63,30 +63,39 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
   exports.createProcure = async (req, res, next) => {
     try {
       // ตรวจสอบข้อมูลที่ส่งเข้ามา
-      const { error, value } = procureSchema.validate(req.body);
+      const { Order_No, Procure_No } = req.body; // ดึงค่า Order_No และ Procure_No จาก req.body
+  
+      // กำหนดค่า OdPcLn_No ก่อนการตรวจสอบ
+      const OdPcLn_No = Order_No + Procure_No;
+      const OdPc_No = Order_No + Procure_No;
+      // สร้างข้อมูลใหม่
+      const procureData = {
+        ...req.body,
+        OdPcLn_No, // กำหนดค่า OdPcLn_No
+        OdPc_No,
+        Pc_Reg_Date: new Date().toISOString(), // กำหนด Pc_Reg_Date
+        Pc_Progress_CD: "1", // กำหนดค่า Pc_Progress_CD
+        Vendor_CAT: "1",
+      };
+  
+      // ตรวจสอบข้อมูลที่ตรวจสอบแล้ว
+      const { error, value } = procureSchema.validate(procureData);
       if (error) {
         return res.status(400).json({ message: error.details[0].message });
       }
   
-      // ข้อมูลที่ตรวจสอบแล้วสามารถใช้งานได้
-      const procureData = value;
-  
       // ล็อกข้อมูลที่ต้องการเพิ่ม
       console.log("Procure Data to be created:", procureData);
   
-    
+      // สร้างรายการ procure ใหม่ในฐานข้อมูล
       const newProcure = await prisma.tD_Procure.create({ data: procureData });
   
-  
-
-
-      
       return res
         .status(201)
-        .json({ message: "Order created successfully", procure: newProcure });
+        .json({ message: "Procure created successfully", procure: newProcure });
     } catch (err) {
       // ล็อกข้อผิดพลาดเพื่อการตรวจสอบ
-      console.error("Error creating order:", err);
+      console.error("Error creating procure:", err);
       return next(createError(500, "Internal Server Error"));
     }
   };
