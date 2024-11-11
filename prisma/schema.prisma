@@ -1041,8 +1041,7 @@ model TM_WorkerG {
 }
 
 model TM_Customer {
-    id               String  @id // รหัสประจำตัว (Primary Key)
-    Customer_CD      String? // รหัสลูกค้า
+    Customer_CD      String @id  // รหัสลูกค้า
     Customer_Name    String? // ชื่อลูกค้า
     Customer_Name2   String? // ชื่อลูกค้า (สำรอง)
     Customer_Abb     String? // ตัวย่อของลูกค้า
@@ -1053,7 +1052,7 @@ model TM_Customer {
     Customer_TEL     String? // โทรศัพท์ลูกค้า
     Posting_Group    String? // กลุ่มโพสต์
     Payment_CD       String? // รหัสการชำระเงิน
-    SI_Person_CD     String? // รหัสบุคคลที่เกี่ยวข้อง
+    Sl_Person_CD     String? // รหัสบุคคลที่เกี่ยวข้อง
     Blocked          Boolean // สถานะบล็อก
     Customer_FAX     String? // โทรสารลูกค้า
     Branch_No        String? // หมายเลขสาขา
@@ -1208,6 +1207,133 @@ model TS_Set {
     LINK_Name10       String?   @db.Text
     LINK10            String?   @db.Text
 }
+
+model tm_request1 {
+  Request1_CD     String  @id @db.VarChar(2)
+  Request1_Name   String?  @db.VarChar(20)
+  Request1_Abb    String?  @db.VarChar(10)
+  Request1_Symbol String?  @db.VarChar(10)
+  Request1_Remark String?  @db.VarChar(20)
+}
+
+model tm_request2 {
+  Request2_CD     String  @id @db.VarChar(2)
+  Request2_Name   String?  @db.VarChar(20)
+  Request2_Abb    String?  @db.VarChar(10)
+  Request2_Symbol String?  @db.VarChar(10)
+  Request2_Remark String?  @db.VarChar(20)
+}
+
+model tm_request3 {
+  Request3_CD     String  @id @db.VarChar(2)
+  Request3_Name   String?  @db.VarChar(20)
+  Request3_Abb    String?  @db.VarChar(10)
+  Request3_Symbol String?  @db.VarChar(10)
+  Request3_Remark String?  @db.VarChar(20)
+}
+
+model tm_target {
+  Target_CD       String @id @db.VarChar(2)
+  Target_Name     String? @db.VarChar(10)
+  Target_Abb      String? @db.VarChar(5)
+  Target_Symbol   String? @db.VarChar(5)
+  Target_Mark     String? @db.VarChar(5)
+  Target_Price    Float?
+  Target_Remark   String? @db.VarChar(50)
+}
+
+model tm_unit {
+  Unit_CD      String @id @db.VarChar(2)
+  Unit_Name    String? @db.VarChar(50)
+  Unit_Abb     String? @db.VarChar(50)
+  Unit_Remark  String? @db.VarChar(50)
+}
+model tm_supply {
+  Supply_CD       String @id @db.VarChar(2)
+  Supply_Name     String? @db.VarChar(20)
+  Supply_Abb      String? @db.VarChar(15)
+  Supply_Symbol   String? @db.VarChar(10)
+  Supply_Mark     String? @db.VarChar(10)
+  Supply_Remark   String? @db.VarChar(20)
+}
+model tm_item1 {
+  Item1_CD        String  @id @db.VarChar(20)
+  Item1_Name      String?  @db.VarChar(50)
+  Item1_Name2     String?  @db.VarChar(50)
+  Item1_Abb       String?  @db.VarChar(50)
+  Item1_Unit      String?  @db.VarChar(10)
+  Posting_Group   String?  @db.VarChar(10)
+  Unit_Price      Decimal? @db.Decimal(28, 20)
+  Unit_Cost       Decimal? @db.Decimal(28, 20)
+  Gross_Weight    Decimal? @db.Decimal(28, 20)
+  Net_Weight      Decimal? @db.Decimal(28, 20)
+  Blocked         Boolean? @db.Bit(1)
+  Item1_Type      String?  @db.VarChar(20)
+  Item1_Grp       String?  @db.VarChar(50)
+  Item1_Remark    String?  @db.VarChar(50)
+}
+model tm_coating {
+  Coating_CD       String @id @db.VarChar(2)
+  Coating_Name     String? @db.VarChar(10)
+  Coating_Abb      String? @db.VarChar(5)
+  Coating_Symbol   String? @db.VarChar(3)
+  Coating_Remark   String? @db.VarChar(20)
+}
+
+model tm_price {
+  Price_CD      String @id @db.VarChar(2)
+  Price_Name    String? @db.VarChar(15)
+  Price_Abb     String? @db.VarChar(10)
+  Price_Symbol  String? @db.VarChar(5)
+  Price_Remark  String? @db.VarChar(20)
+}
+
+model tm_contract_docu {
+  Contract_Docu_CD      String @id @db.VarChar(6)
+  Contract_Docu_Name    String? @db.VarChar(10)
+  Contract_Docu_Abb     String? @db.VarChar(10)
+  Contract_Docu_Remark  String? @db.VarChar(20)
+}
+
+model tm_od_quote {
+  Od_Quote_CD      String @id @db.VarChar(2)
+  Od_Quote_Name    String? @db.VarChar(15)
+  Od_Quote_Abb     String? @db.VarChar(10)
+  Od_Quote_Symbol  String? @db.VarChar(5)
+  Od_Quote_Remark  String? @db.VarChar(50)
+}
+
+model tm_od_progress {
+  Od_Progress_CD      String @id @db.VarChar(2)
+  Od_Progress_Name    String? @db.VarChar(20)
+  Od_Progress_Abb     String? @db.VarChar(10)
+  Od_Progress_Symbol  String? @db.VarChar(5)
+  Od_Progress_Mark    String? @db.VarChar(5)
+  Od_Progress_Remark  String? @db.VarChar(50)
+}
+
+model tm_delivery {
+  Delivery_CD       String  @id @db.VarChar(2)
+  Delivery_Name     String? @db.VarChar(30)
+  Delivery_Abb      String? @db.VarChar(25)
+  Delivery_Symbol   String? @db.VarChar(20)
+  Delivery_Mark     String? @db.VarChar(15)
+  Coefficient       Float?
+  For_Order         Boolean? @db.Bit(1)
+  For_Procure       Boolean? @db.Bit(1)
+  Delivery_Remark   String? @db.VarChar(50)
+}
+
+model tm_specific {
+  Specific_CD       String  @id @db.VarChar(2)
+  Specific_Name     String? @db.VarChar(20)
+  Specific_Abb      String? @db.VarChar(15)
+  Specific_Symbol   String? @db.VarChar(10)
+  Specific_Mark     String? @db.VarChar(5)
+  Specific_Remark   String? @db.VarChar(20)
+}
+
+
 
 model TM_User {
     User_ID     String   @id

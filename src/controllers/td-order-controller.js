@@ -85,42 +85,96 @@ exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
 };
 
 exports.tm_workerg = async (req, res, next) => {
-    try {
-      // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
-      const workerg = await prisma.tM_WorkG.findMany();
-  
-      // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
-      return res.status(200).json({
-        status: "success",
-        data: {
-            workerg: workerg,
-        },
-      });
-    } catch (err) {
-      console.error("Error searching workerg:", err);
-      return next(createError(500, "Internal Server Error"));
-    }
-  };
+  try {
+    // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
+    const workerg = await prisma.tM_WorkG.findMany();
 
-  exports.tm_worker = async (req, res, next) => {
-    try {
-      // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
-      const worker = await prisma.tM_Worker.findMany();
-  
-      // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
-      return res.status(200).json({
-        status: "success",
-        data: {
-            worker: worker,
-        },
-      });
-    } catch (err) {
-      console.error("Error searching worker:", err);
-      return next(createError(500, "Internal Server Error"));
-    }
-  };
+    // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
+    return res.status(200).json({
+      status: "success",
+      data: {
+        workerg: workerg,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching workerg:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
+
+exports.tm_request1 = async (req, res, next) => {
+  try {
+    // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
+    const request1 = await prisma.tm_request1.findMany();
+
+    // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
+    return res.status(200).json({
+      status: "success",
+      data: {
+        request1: request1,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching request1:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
+
+exports.tm_request2 = async (req, res, next) => {
+  try {
+    // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
+    const request2 = await prisma.tm_request2.findMany();
+
+    // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
+    return res.status(200).json({
+      status: "success",
+      data: {
+        request2: request2,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching request2:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
+
+exports.tm_request3 = async (req, res, next) => {
+  try {
+    // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
+    const request3 = await prisma.tm_request3.findMany();
+
+    // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
+    return res.status(200).json({
+      status: "success",
+      data: {
+        request3: request3,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching request3:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
 
 
+
+exports.tm_worker = async (req, res, next) => {
+  try {
+    // ดึงข้อมูลทั้งหมดจาก TD_Order โดยไม่ต้องใช้เงื่อนไข
+    const worker = await prisma.tM_Worker.findMany();
+
+    // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
+    return res.status(200).json({
+      status: "success",
+      data: {
+        worker: worker,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching worker:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
 
 exports.tm_customer = async (req, res, next) => {
   try {
@@ -129,15 +183,15 @@ exports.tm_customer = async (req, res, next) => {
 
     // ส่งข้อมูลทั้งหมดกลับไปยังผู้ใช้
     return res.status(200).json({
-        status: "success",
-        data: {
-            customer: customer,
-        },
-      });
-    } catch (err) {
-      console.error("Error searching customer:", err);
-      return next(createError(500, "Internal Server Error"));
-    }
+      status: "success",
+      data: {
+        customer: customer,
+      },
+    });
+  } catch (err) {
+    console.error("Error searching customer:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
 };
 
 exports.editOrder = async (req, res, next) => {
@@ -150,10 +204,8 @@ exports.editOrder = async (req, res, next) => {
 
     // ข้อมูลที่ตรวจสอบแล้วสามารถใช้งานได้
     const orderData = value;
-  
-    console.log("Order Data to be edited:", orderData);
 
-  
+    console.log("Order Data to be edited:", orderData);
 
     // อัปเดตข้อมูลในฐานข้อมูล
     const updatedOrder = await prisma.tD_Order.update({
@@ -217,9 +269,7 @@ exports.createOrder = async (req, res, next) => {
     // ล็อกข้อมูลที่ต้องการเพิ่ม
     console.log("Order Data to be created:", orderData);
 
-  
     const newOrder = await prisma.tD_Order.create({ data: orderData });
-
 
     // ตรวจสอบ Order_No และ Quantity
     if (!newOrder.Order_No) {
@@ -231,7 +281,7 @@ exports.createOrder = async (req, res, next) => {
     }
     newOrder.Pd_Target_Qty = newOrder.Quantity;
     newOrder.NAV_Name = newOrder.Product_Name;
-    
+
     return res
       .status(201)
       .json({ message: "Order created successfully", order: newOrder });
@@ -276,12 +326,10 @@ exports.Product_Docu_Set = async (req, res, next) => {
     });
 
     // ส่งคำตอบกลับ
-    return res
-      .status(200)
-      .json({
-        message: "Product document updated successfully",
-        order: updatedProduct,
-      });
+    return res.status(200).json({
+      message: "Product document updated successfully",
+      order: updatedProduct,
+    });
   } catch (err) {
     // ล็อกข้อผิดพลาดเพื่อการตรวจสอบ
     console.error("Error updating product document:", err);

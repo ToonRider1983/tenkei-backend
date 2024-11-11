@@ -4,7 +4,10 @@ const router = express.Router();
 
 router.get("/td-orders", tdOrderController.fetchOrders);
 router.get("/workerG", tdOrderController.tm_workerg);
-router.get("/worker", tdOrderController.tm_workerg);
+router.get("/worker", tdOrderController.tm_worker);
+router.get("/request1", tdOrderController.tm_request1);
+router.get("/request2", tdOrderController.tm_request2);
+router.get("/request3", tdOrderController.tm_request3);
 router.get("/customer", tdOrderController.tm_customer);
 router.post("/search-order", tdOrderController.Search_Order_No_AfterUpdate);
 router.put("/edit-order", tdOrderController.editOrder);
