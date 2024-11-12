@@ -1,6 +1,7 @@
 const createError = require("../utils/create-error");
 const prisma = require("../models/prisma");
 const { procureSchema } = require("../validators/procure-validator");
+const { date } = require("joi");
 
 exports.Search_Order_No_AfterUpdate = async (req, res, next) => {
   try {
@@ -101,10 +102,10 @@ exports.Search_procure_AfterUpdate = async (req, res, next) => {
   exports.createProcure = async (req, res, next) => {
     try {
       // ตรวจสอบข้อมูลที่ส่งเข้ามา
-      const { Order_No, Procure_No } = req.body; // ดึงค่า Order_No และ Procure_No จาก req.body
+      const { Order_No, Procure_No,Pc_Line_No } = req.body; // ดึงค่า Order_No และ Procure_No จาก req.body
   
       // กำหนดค่า OdPcLn_No ก่อนการตรวจสอบ
-      const OdPcLn_No = Order_No + Procure_No;
+      const OdPcLn_No = Order_No + Procure_No + Pc_Line_No;
       const OdPc_No = Order_No + Procure_No;
       // สร้างข้อมูลใหม่
       const procureData = {
@@ -189,6 +190,48 @@ exports.Search_procure_AfterUpdate = async (req, res, next) => {
     }
 };
 
+exports.Vendor_CATProcure = async (req, res, next) => {
+  try {
+    const { Vendor_CAT } = req.body;
+    let records; // ตัวแปรเพื่อเก็บข้อมูลที่จะส่งกลับใน response
+
+    // ตรวจสอบค่า Vendor_CAT
+    if (Vendor_CAT === "0") {
+      const workGRecords = await prisma.tM_WorkG.findMany();
+      records = workGRecords; // กำหนดข้อมูล Work Group ให้กับตัวแปร records
+
+      if (workGRecords.length === 0) {
+        return res.status(400).json({
+          message: "No records found in Work Group! But OK?",
+        });
+      }
+
+    } else if (Vendor_CAT === "1") {
+      const vendorRecords = await prisma.tm_vendor.findMany();
+      records = vendorRecords; // กำหนดข้อมูล Vendor ให้กับตัวแปร records
+
+      if (vendorRecords.length === 0) {
+        return res.status(400).json({
+          message: "No records found in Vendor! But OK?",
+        });
+      }
+    }else{
+      const workGRecords = await prisma.tM_WorkG.findMany();
+      records = workGRecords; 
+    }
+
+    // ส่งการตอบกลับพร้อมข้อมูลที่ดึงมา
+    res.status(200).json({ 
+      message: "Vendor validation passed.",
+      data: records // แสดงข้อมูลใน response
+    });
+  } catch (err) {
+    // ล็อกข้อผิดพลาดเพื่อการตรวจสอบ
+    console.error("Error validating Vendor:", err);
+    return next(createError(500, "Internal Server Error"));
+  }
+};
+
 exports.deleteProcure = async (req, res, next) => {
   try {
     
@@ -213,7 +256,7 @@ exports.deleteProcure = async (req, res, next) => {
       .json({ message: "Procure deleted successfully", procure: deletedProcure });
   } catch (err) {
     // ล็อกข้อผิดพลาดเพื่อการตรวจสอบ
-    console.error("Error deleting order:", err);
+    console.error("Error deleting Procure:", err);
     return next(createError(500, "Internal Server Error"));
   }
 };
