@@ -1,1553 +1,1592 @@
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model TD_Order {
-    Order_No          String    @id
-    Product_Grp_CD    String?
-    Customer_CD       String?
-    NAV_Name          String?
-    Product_Name      String?
-    NAV_Size          String?
-    Product_Size      String?
-    Tolerance         String?
-    Customer_Draw     String?
-    Company_Draw      String?
-    Product_Draw      String?
-    Quantity          Int?
-    Pd_Target_Qty     Int?
-    Pd_Complete_Qty   Int?
-    I_Complete_Qty    Int?
-    Shipment_Qty      Int?
-    Pd_Split_Qty      Int?
-    Pd_Calc_Qty       Int?
-    NG_Qty            Int?
-    Unit_CD           String?
-    Sales_Grp_CD      String?
-    Sales_Person_CD   String?
-    Request1_CD       String?
-    Request2_CD       String?
-    Request3_CD       String?
-    Material1         String?
-    H_Treatment1      String?
-    Material2         String?
-    H_Treatment2      String?
-    Material3         String?
-    H_Treatment3      String?
-    Material4         String?
-    H_Treatment4      String?
-    Material5         String?
-    H_Treatment5      String?
-    Coating_CD        String?
-    Coating           String?
-    Quote_No          String?
-    Quote_CD          String?
-    Od_No_of_Pd_Split String?
-    ItemO_CD          String?
-    Item1_CD          String?
-    Item2_CD          String?
-    Item3_CD          String?
-    Item4_CD          String?
-    Custom_Material   String?
-    Od_No_of_Custom   String?
-    Supply_CD         String?
-    Destination_CD    String?
-    Contract_Docu_CD  String?
-    Price_CD          String?
-    Unit_Price        Float?
-    Specific_CD       String?
-    Od_Progress_CD    String?
-    Delivery_CD       String?
-    Schedule_CD       String?
-    Target_CD         String?
-    Product_Docu      String?
-    Procure_Docu      String?
-    Outside_Docu      String?
-    Inspect_Docu      String?
-    Send_Docu         String?
-    Supple_Docu       String?
-    Sl_Instructions   String?
-    Pd_Instructions   String?
-    Pd_Remark         String?
-    I_Remark          String?
-    Od_Ctl_Person_CD  String?
-    Od_Reg_Person_CD  String?
-    Od_Upd_Person_CD  String?
-    Request_Delivery  DateTime?
-    Product_Delivery  DateTime?
-    Confirm_Delivery  DateTime?
-    NAV_Delivery      DateTime?
-    ASP_Delivery      DateTime?
-    Order_Date        DateTime?
-    Pd_Received_Date  DateTime?
-    Pd_Complete_Date  DateTime?
-    I_Completed_Date  DateTime?
-    Shipment_Date     DateTime?
-    Pd_Calc_Date      DateTime?
-    Calc_Process_Date DateTime?
-    Rs_Confirm_Date   DateTime?
-    Od_Reg_Date       DateTime?
-    Od_Upd_Date       DateTime?
-    Od_NAV_Upd_Date   DateTime?
-    Carbide_Cost      Float?
-    Steel_Cost        Float?
-    Outsourcing_Cost  Float?
-    H_Treatment_Cost  Float?
-    Coating_Cost      Float?
-    Electrode_Cost    Float?
-    Electroplate_Cost Float?
-    Tooling_Cost      Float?
-    Jig_Cost          Float?
-    Fixtures_Cost     Float?
-    Od_CAT1           Boolean?
-    Od_CAT2           Boolean?
-    Od_CAT3           Boolean?
-    Od_Pending        Boolean?
-    Temp_Shipment     Boolean?
-    Unreceived        Boolean?
-    Current_Order     Boolean?
-    Month_Plan        Boolean?
-    Week_Plan         Boolean?
-    Today_Plan        Boolean?
-    Must_Delivery     Boolean?
-    Into_I            Boolean?
-    Input_Confirm     Boolean?
-    Pd_Confirm        Boolean?
-    I_Confirm         Boolean?
-    Od_Confirm        Boolean?
-    I_Target          Boolean?
-    Urgent_Goods      Boolean?
+  Order_No          String    @id
+  Product_Grp_CD    String?
+  Customer_CD       String?
+  NAV_Name          String?
+  Product_Name      String?
+  NAV_Size          String?
+  Product_Size      String?
+  Tolerance         String?
+  Customer_Draw     String?
+  Company_Draw      String?
+  Product_Draw      String?
+  Quantity          Int?
+  Pd_Target_Qty     Int?
+  Pd_Complete_Qty   Int?
+  I_Complete_Qty    Int?
+  Shipment_Qty      Int?
+  Pd_Split_Qty      Int?
+  Pd_Calc_Qty       Int?
+  NG_Qty            Int?
+  Unit_CD           String?
+  Sales_Grp_CD      String?
+  Sales_Person_CD   String?
+  Request1_CD       String?
+  Request2_CD       String?
+  Request3_CD       String?
+  Material1         String?
+  H_Treatment1      String?
+  Material2         String?
+  H_Treatment2      String?
+  Material3         String?
+  H_Treatment3      String?
+  Material4         String?
+  H_Treatment4      String?
+  Material5         String?
+  H_Treatment5      String?
+  Coating_CD        String?
+  Coating           String?
+  Quote_No          String?
+  Quote_CD          String?
+  Od_No_of_Pd_Split String?
+  ItemO_CD          String?
+  Item1_CD          String?
+  Item2_CD          String?
+  Item3_CD          String?
+  Item4_CD          String?
+  Custom_Material   String?
+  Od_No_of_Custom   String?
+  Supply_CD         String?
+  Destination_CD    String?
+  Contract_Docu_CD  String?
+  Price_CD          String?
+  Unit_Price        Float?
+  Specific_CD       String?
+  Od_Progress_CD    String?
+  Delivery_CD       String?
+  Schedule_CD       String?
+  Target_CD         String?
+  Product_Docu      String?
+  Procure_Docu      String?
+  Outside_Docu      String?
+  Inspect_Docu      String?
+  Send_Docu         String?
+  Supple_Docu       String?
+  Sl_Instructions   String?
+  Pd_Instructions   String?
+  Pd_Remark         String?
+  I_Remark          String?
+  Od_Ctl_Person_CD  String?
+  Od_Reg_Person_CD  String?
+  Od_Upd_Person_CD  String?
+  Request_Delivery  DateTime?
+  Product_Delivery  DateTime?
+  Confirm_Delivery  DateTime?
+  NAV_Delivery      DateTime?
+  ASP_Delivery      DateTime?
+  Order_Date        DateTime?
+  Pd_Received_Date  DateTime?
+  Pd_Complete_Date  DateTime?
+  I_Completed_Date  DateTime?
+  Shipment_Date     DateTime?
+  Pd_Calc_Date      DateTime?
+  Calc_Process_Date DateTime?
+  Rs_Confirm_Date   DateTime?
+  Od_Reg_Date       DateTime?
+  Od_Upd_Date       DateTime?
+  Od_NAV_Upd_Date   DateTime?
+  Carbide_Cost      Float?
+  Steel_Cost        Float?
+  Outsourcing_Cost  Float?
+  H_Treatment_Cost  Float?
+  Coating_Cost      Float?
+  Electrode_Cost    Float?
+  Electroplate_Cost Float?
+  Tooling_Cost      Float?
+  Jig_Cost          Float?
+  Fixtures_Cost     Float?
+  Od_CAT1           Boolean?
+  Od_CAT2           Boolean?
+  Od_CAT3           Boolean?
+  Od_Pending        Boolean?
+  Temp_Shipment     Boolean?
+  Unreceived        Boolean?
+  Current_Order     Boolean?
+  Month_Plan        Boolean?
+  Week_Plan         Boolean?
+  Today_Plan        Boolean?
+  Must_Delivery     Boolean?
+  Into_I            Boolean?
+  Input_Confirm     Boolean?
+  Pd_Confirm        Boolean?
+  I_Confirm         Boolean?
+  Od_Confirm        Boolean?
+  I_Target          Boolean?
+  Urgent_Goods      Boolean?
 
-    // ความสัมพันธ์กับ TD_Procure
-    procure TD_Procure[] @relation("OrderToProcure")
-    Plan    TD_Plan[]    @relation("OrderToPlan")
+  // ความสัมพันธ์กับ TD_Procure
+  procure TD_Procure[] @relation("OrderToProcure")
+  Plan    TD_Plan[]    @relation("OrderToPlan")
 }
 
 model TD_Procure {
-    Order_No           String // หมายเลขคำสั่ง (Short Text)
-    Procure_No         String? // หมายเลขการจัดซื้อ (Short Text)
-    OdPc_No            String? // หมายเลข OdPc (Short Text)
-    OdPcLn_No          String    @id // หมายเลข OdPcLn (Short Text)
-    Vendor_CAT         String? // หมวดหมู่ผู้จำหน่าย (Short Text)
-    Vendor_CD          String? // รหัสผู้จำหน่าย (Short Text)
-    Pc_Name            String? // ชื่อการจัดซื้อ (Short Text)
-    Pc_Material        String? // วัสดุการจัดซื้อ (Short Text)
-    Pc_Mate_Docu       String? // เอกสารวัสดุการจัดซื้อ (Short Text)
-    Temp_Price         String? // ราคาชั่วคราว (Price CD)
-    Unit_Price         Float? // ราคาต่อหน่วย
-    Yes_No_1           Boolean? // ใช่/ไม่ใช่ 1
-    Yes_No_2           Boolean? // ใช่/ไม่ใช่ 2
-    Short_Text_1       String? // ข้อความสั้น 1 (Short Text)
-    Number_1           Int? // หมายเลข 1 (Number)
-    Number_2           Int? // หมายเลข 2 (Number)
-    Pc_Qty             Int? // จำนวนการจัดซื้อ
-    Pc_Unit_CD         String? // รหัสหน่วยการจัดซื้อ (Short Text)
-    Pc_Person_CD       String? // รหัสบุคคลที่ทำการจัดซื้อ (Short Text)
-    Pc_Date            DateTime? // วันที่การจัดซื้อ
-    Pc_Req_Delivery    DateTime? // วันที่ขอการจัดส่ง
-    Pc_Req_Delivery_CD String? // รหัสการขอการจัดส่ง (Short Text)
-    Pc_Ans_Delivery    DateTime? // วันที่ตอบการจัดส่ง
-    Pc_Ans_Delivery_CD String? // รหัสการตอบการจัดส่ง (Short Text)
-    Pc_Delivery_Judge  String? // การตัดสินการจัดส่ง (Short Text)
-    Pc_Progress_CD     String? // รหัสความก้าวหน้า (Short Text)
-    Pc_Send_Date       DateTime? // วันที่ส่งการจัดซื้อ
-    Pc_Arrival_Date    DateTime? // วันที่ถึง (Arrival Date)
-    Pc_Arrival_Qty     Int? // จำนวนที่ถึง (Arrival Quantity)
-    Pc_Cancel_Date     DateTime? // วันที่ยกเลิก
-    Procure_Docu       String? // เอกสารการจัดซื้อ (Hyperlink)
-    Pc_Remark          String? // หมายเหตุการจัดซื้อ (Short Text)
-    Print              Boolean? // พิมพ์ (Yes/No)
-    Pc_Reg_Date        DateTime? // วันที่ลงทะเบียนการจัดซื้อ
-    Pc_Upd_Date        DateTime? // วันที่อัปเดตการจัดซื้อ
-    Pc_NAV_Reg_Date    DateTime? // วันที่ลงทะเบียน NAV
-    PC_NAV_Upd_Date    DateTime? // วันที่อัปเดต NAV
-    Pc_Line_No         Int? // หมายเลขบรรทัด (Line Number)
+  Order_No           String // หมายเลขคำสั่ง (Short Text)
+  Procure_No         String? // หมายเลขการจัดซื้อ (Short Text)
+  OdPc_No            String? // หมายเลข OdPc (Short Text)
+  OdPcLn_No          String    @id // หมายเลข OdPcLn (Short Text)
+  Vendor_CAT         String? // หมวดหมู่ผู้จำหน่าย (Short Text)
+  Vendor_CD          String? // รหัสผู้จำหน่าย (Short Text)
+  Pc_Name            String? // ชื่อการจัดซื้อ (Short Text)
+  Pc_Material        String? // วัสดุการจัดซื้อ (Short Text)
+  Pc_Mate_Docu       String? // เอกสารวัสดุการจัดซื้อ (Short Text)
+  Temp_Price         String? // ราคาชั่วคราว (Price CD)
+  Unit_Price         Float? // ราคาต่อหน่วย
+  Yes_No_1           Boolean? // ใช่/ไม่ใช่ 1
+  Yes_No_2           Boolean? // ใช่/ไม่ใช่ 2
+  Short_Text_1       String? // ข้อความสั้น 1 (Short Text)
+  Number_1           String? // หมายเลข 1 (Number)
+  Number_2           String? // หมายเลข 2 (Number)
+  Pc_Qty             String? // จำนวนการจัดซื้อ
+  Pc_Unit_CD         String? // รหัสหน่วยการจัดซื้อ (Short Text)
+  Pc_Person_CD       String? // รหัสบุคคลที่ทำการจัดซื้อ (Short Text)
+  Pc_Date            DateTime? // วันที่การจัดซื้อ
+  Pc_Req_Delivery    DateTime? // วันที่ขอการจัดส่ง
+  Pc_Req_Delivery_CD String? // รหัสการขอการจัดส่ง (Short Text)
+  Pc_Ans_Delivery    DateTime? // วันที่ตอบการจัดส่ง
+  Pc_Ans_Delivery_CD String? // รหัสการตอบการจัดส่ง (Short Text)
+  Pc_Delivery_Judge  String? // การตัดสินการจัดส่ง (Short Text)
+  Pc_Progress_CD     String? // รหัสความก้าวหน้า (Short Text)
+  Pc_Send_Date       DateTime? // วันที่ส่งการจัดซื้อ
+  Pc_Arrival_Date    DateTime? // วันที่ถึง (Arrival Date)
+  Pc_Arrival_Qty     String? // จำนวนที่ถึง (Arrival Quantity)
+  Pc_Cancel_Date     DateTime? // วันที่ยกเลิก
+  Procure_Docu       String? // เอกสารการจัดซื้อ (Hyperlink)
+  Pc_Remark          String? // หมายเหตุการจัดซื้อ (Short Text)
+  Print              Boolean? // พิมพ์ (Yes/No)
+  Pc_Reg_Date        DateTime? // วันที่ลงทะเบียนการจัดซื้อ
+  Pc_Upd_Date        DateTime? // วันที่อัปเดตการจัดซื้อ
+  Pc_NAV_Reg_Date    DateTime? // วันที่ลงทะเบียน NAV
+  PC_NAV_Upd_Date    DateTime? // วันที่อัปเดต NAV
+  Pc_Line_No         String? // หมายเลขบรรทัด (Line Number)
 
-    // ความสัมพันธ์กับ TD_Order
-    order TD_Order @relation("OrderToProcure", fields: [Order_No], references: [Order_No])
+  // ความสัมพันธ์กับ TD_Order
+  order TD_Order @relation("OrderToProcure", fields: [Order_No], references: [Order_No])
 }
 
 model TD_Plan {
-    Order_No         String // หมายเลขคำสั่ง (Short Text) 
-    Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
-    OdPt_No          String? // หมายเลข OdPt (Short Text)
-    Parts_CD         String? // รหัสชิ้นส่วน (Short Text)
-    Pt_Material      String? // วัสดุชิ้นส่วน (Short Text)
-    Pt_Qty           Int? // จำนวนชิ้นส่วน (Number)
-    Pt_Unit_CD       String? // รหัสหน่วยชิ้นส่วน (Short Text)
-    Pt_Split         Boolean? // การแยกชิ้นส่วน (Yes/No)
-    Pt_Spare_Qty     Int? // จำนวนชิ้นส่วนสำรอง (Number)
-    Pt_NG_Qty        Int? // จำนวน NG (Number)
-    Pt_l_Comp_Qty    Int? // จำนวนที่เสร็จสมบูรณ์ (Number)
-    Connect_Od_No    String? // หมายเลขเชื่อมโยง Od (Short Text)
-    Connect_Pt_No    String? // หมายเลขเชื่อมโยง Pt (Short Text)
-    Connect_Pr_No    Int? // หมายเลขเชื่อมโยง Pr (Number)
-    Pl_Quote_OdPt_No String? // หมายเลขใบเสนอราคา OdPt (Short Text)
-    PI_Quote_CD      String? // รหัสใบเสนอราคา PI (Short Text)
-    PI_St_Rev_Day    Int? // วันปรับปรุง PI (Number)
-    Pl_Ed_Rev_Day    Int? // วันปรับปรุง (Number)
-    Pl_Progress_CD   Int? // รหัสความก้าวหน้า (Number)
-    PI_Schedule_CD   String? // รหัสตาราง PI (Short Text)
-    Pt_Instructions  String? // คำแนะนำชิ้นส่วน (Short Text)
-    Pt_Remark        String? // หมายเหตุชิ้นส่วน (Short Text)
-    Pt_Information   String? // ข้อมูลชิ้นส่วน (Short Text)
-    Pl_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน (Short Text)
-    PI_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต PI (Short Text)
-    Pt_Delivery      DateTime? // วันที่ส่งมอบ (Date/Time)
-    Target_Delivery  DateTime? // วันที่ส่งมอบที่ตั้งเป้า (Date/Time)
-    PI_Reg_Date      DateTime? // วันที่ลงทะเบียน PI (Date/Time)
-    Pt_Complete_Date DateTime? // วันที่เสร็จสมบูรณ์ชิ้นส่วน (Date/Time)
-    Pt_I_Date        DateTime? // วันที่ I (Date/Time)
-    Pt_Shipment_Date DateTime? // วันที่ส่งชิ้นส่วน (Date/Time)
-    Pt_Calc_Date     DateTime? // วันที่คำนวณชิ้นส่วน (Date/Time)
-    Pt_Confirm_Date  DateTime? // วันที่ยืนยันการส่งมอบ (Date/Time)
-    PI_Upd_Date      DateTime? // วันที่อัปเดต PI (Date/Time)
-    Pl_Month_Plan    Boolean? // แผนเดือน (Yes/No)
-    PI_Wweek_Plan    Boolean? // แผนสัปดาห์ (Yes/No)
-    PI_Today_Plan    Boolean? // แผนวันนี้ (Yes/No)
-    Pt_CAT1          Boolean? // หมวดหมู่ชิ้นส่วน 1 (Yes/No)
-    Pt_CAT2          Boolean? // หมวดหมู่ชิ้นส่วน 2 (Yes/No)
-    Pt_CAT3          Boolean? // หมวดหมู่ชิ้นส่วน 3 (Yes/No)
-    Money_Object     Boolean? // วัตถุเงิน (Yes/No)
-    Outside          Boolean? // ภายนอก (Yes/No)
-    Pt_Pending       Boolean? // อยู่ระหว่างรอ (Yes/No)
-    Info1            String? // ข้อมูลเพิ่มเติม 1 (Short Text)
-    Info2            String? // ข้อมูลเพิ่มเติม 2 (Short Text)
-    Info3            String? // ข้อมูลเพิ่มเติม 3 (Short Text)
-    Info4            String? // ข้อมูลเพิ่มเติม 4 (Short Text)
-    Info5            String? // ข้อมูลเพิ่มเติม 5 (Short Text)
-    Info6            String? // ข้อมูลเพิ่มเติม 6 (Short Text)
-    Info_Chk1        Boolean? // ตรวจสอบข้อมูล 1 (Yes/No)
-    Info_Chk2        Boolean? // ตรวจสอบข้อมูล 2 (Yes/No)
-    Info_Chk3        Boolean? // ตรวจสอบข้อมูล 3 (Yes/No)
-    Info_Chk4        Boolean? // ตรวจสอบข้อมูล 4 (Yes/No)
-    Info_Chk5        Boolean? // ตรวจสอบข้อมูล 5 (Yes/No)
-    Info_Chk6        Boolean? // ตรวจสอบข้อมูล 6 (Yes/No)
-    Max_No           String? // หมายเลขสูงสุด (Short Text)
-    End_No           String? // หมายเลขสิ้นสุด (Short Text)
-    Now_No           String? // หมายเลขปัจจุบัน (Short Text)
-    Total_M_Time     Int? // เวลาทั้งหมด M (Number)
-    Total_P_Time     Int? // เวลาทั้งหมด P (Number)
-    Re_Pr_Qty        Int? // จำนวน Re-Pr (Number)
-    Re_Total_M_Time  Int? // เวลาทั้งหมด M ที่ Re (Number)
-    Re_Total_P_Time  Int? // เวลาทั้งหมด P ที่ Re (Number)
-    Re_Total_N_Time  Int? // เวลาทั้งหมด N ที่ Re (Number)
-    Re_Days          Int? // จำนวนวันที่ Re (Number)
-    Re_Days_CAT      Int? // จำนวนวันที่ Re (Category) (Number)
-    Re_Days_Work_R   Int? // จำนวนวันทำงาน R (Number)
-    Re_Days_Work_P   Int? // จำนวนวันทำงาน P (Number)
-    Re_Pr_Qty_P      Int? // จำนวน Re-Pr P (Number)
-    Priority_P       Int? // ความสำคัญ P (Number)
-    Join_P           Int? // เข้าร่วม P (Number)
-    Priority_Rate    Int? // อัตราความสำคัญ (Number)
-    PPC1             String? // PPC 1 (Short Text)
-    PPC2             String? // PPC 2 (Short Text)
-    PPC3             String? // PPC 3 (Short Text)
-    PPC4             String? // PPC 4 (Short Text)
-    PPC5             String? // PPC 5 (Short Text)
-    PPC6             String? // PPC 6 (Short Text)
-    PPC7             String? // PPC 7 (Short Text)
-    PPC8             String? // PPC 8 (Short Text)
-    PPC9             String? // PPC 9 (Short Text)
-    PPC10            String? // PPC 10 (Short Text)
-    PPC11            String? // PPC 11 (Short Text)
-    PPC12            String? // PPC 12 (Short Text)
-    PPC13            String? // PPC 13 (Short Text)
-    PPC14            String? // PPC 14 (Short Text)
-    PPC15            String? // PPC 15 (Short Text)
-    PPC16            String? // PPC 16 (Short Text)
-    PPC17            String? // PPC 17 (Short Text)
-    PPC18            String? // PPC 18 (Short Text)
-    PPC19            String? // PPC 19 (Short Text)
-    PPC20            String? // PPC 20 (Short Text)
-    PPC21            String? // PPC 21 (Short Text)
-    PPC22            String? // PPC 22 (Short Text)
-    PPC23            String? // PPC 23 (Short Text)
-    PPC24            String? // PPC 24 (Short Text)
-    PPC25            String? // PPC 25 (Short Text)
-    PPC26            String? // PPC 26 (Short Text)
-    PPC27            String? // PPC 27 (Short Text)
-    PPC28            String? // PPC 28 (Short Text)
-    PPC29            String? // PPC 29 (Short Text)
-    PPC30            String? // PPC 30 (Short Text)
-    PPC31            String? // PPC 31 (Short Text)
-    PPC32            String? // PPC 32 (Short Text)
-    PPC33            String? // PPC 33 (Short Text)
-    PPC34            String? // PPC 34 (Short Text)
-    PPC35            String? // PPC 35 (Short Text)
-    PPC36            String? // PPC 36 (Short Text)
-    PMT1             Int? // PMT 1 (Number)
-    PMT2             Int? // PMT 2 (Number)
-    PMT3             Int? // PMT 3 (Number)
-    PMT4             Int? // PMT 4 (Number)
-    PMT5             Int? // PMT 5 (Number)
-    PMT6             Int? // PMT 6 (Number)
-    PMT7             Int? // PMT 7 (Number)
-    PMT8             Int? // PMT 8 (Number)
-    PMT9             Int? // PMT 9 (Number)
-    PMT10            Int? // PMT 10 (Number)
-    PMT11            Int? // PMT 11 (Number)
-    PMT12            Int? // PMT 12 (Number)
-    PMT13            Int? // PMT 13 (Number)
-    PMT14            Int? // PMT 14 (Number)
-    PMT15            Int? // PMT 15 (Number)
-    PMT16            Int? // PMT 16 (Number)
-    PMT17            Int? // PMT 17 (Number)
-    PMT18            Int? // PMT 18 (Number)
-    PMT19            Int? // PMT 19 (Number)
-    PMT20            Int? // PMT 20 (Number)
-    PMT21            Int? // PMT 21 (Number)
-    PMT22            Int? // PMT 22 (Number)
-    PMT23            Int? // PMT 23 (Number)
-    PMT24            Int? // PMT 24 (Number)
-    PMT25            Int? // PMT 25 (Number)
-    PMT26            Int? // PMT 26 (Number)
-    PMT27            Int? // PMT 27 (Number)
-    PMT28            Int? // PMT 28 (Number)
-    PMT29            Int? // PMT 29 (Number)
-    PMT30            Int? // PMT 30 (Number)
-    PMT31            Int? // PMT 31 (Number)
-    PMT32            Int? // PMT 32 (Number)
-    PMT33            Int? // PMT 33 (Number)
-    PMT34            Int? // PMT 34 (Number)
-    PMT35            Int? // PMT 35 (Number)
-    PMT36            Int? // PMT 36 (Number)
-    // ความสัมพันธ์กับ TD_Cost (One-to-Many)
-    costs            TD_Cost[]    @relation("PlanToCost")
-    // ความสัมพันธ์ one-to-one กับ TD_Schedule
-    schedule         TD_Schedule? @relation("SchedulePlan")
-    order            TD_Order     @relation("OrderToPlan", fields: [Order_No], references: [Order_No])
-    Result           TD_Result?   @relation(fields: [Order_No, Parts_No], references: [Order_No, Parts_No]) // เชื่อมโยงไปยัง TD_Result
-    // ความสัมพันธ์ one-to-many กับ TD_WIP
-    wips             TD_WIP[]     @relation("PlanToWIP")
+  Order_No         String // หมายเลขคำสั่ง (Short Text) 
+  Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
+  OdPt_No          String? // หมายเลข OdPt (Short Text)
+  Parts_CD         String? // รหัสชิ้นส่วน (Short Text)
+  Pt_Material      String? // วัสดุชิ้นส่วน (Short Text)
+  Pt_Qty           Int? // จำนวนชิ้นส่วน (Number)
+  Pt_Unit_CD       String? // รหัสหน่วยชิ้นส่วน (Short Text)
+  Pt_Split         Boolean? // การแยกชิ้นส่วน (Yes/No)
+  Pt_Spare_Qty     Int? // จำนวนชิ้นส่วนสำรอง (Number)
+  Pt_NG_Qty        Int? // จำนวน NG (Number)
+  Pt_l_Comp_Qty    Int? // จำนวนที่เสร็จสมบูรณ์ (Number)
+  Connect_Od_No    String? // หมายเลขเชื่อมโยง Od (Short Text)
+  Connect_Pt_No    String? // หมายเลขเชื่อมโยง Pt (Short Text)
+  Connect_Pr_No    Int? // หมายเลขเชื่อมโยง Pr (Number)
+  Pl_Quote_OdPt_No String? // หมายเลขใบเสนอราคา OdPt (Short Text)
+  PI_Quote_CD      String? // รหัสใบเสนอราคา PI (Short Text)
+  PI_St_Rev_Day    Int? // วันปรับปรุง PI (Number)
+  Pl_Ed_Rev_Day    Int? // วันปรับปรุง (Number)
+  Pl_Progress_CD   Int? // รหัสความก้าวหน้า (Number)
+  PI_Schedule_CD   String? // รหัสตาราง PI (Short Text)
+  Pt_Instructions  String? // คำแนะนำชิ้นส่วน (Short Text)
+  Pt_Remark        String? // หมายเหตุชิ้นส่วน (Short Text)
+  Pt_Information   String? // ข้อมูลชิ้นส่วน (Short Text)
+  Pl_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน (Short Text)
+  PI_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต PI (Short Text)
+  Pt_Delivery      DateTime? // วันที่ส่งมอบ (Date/Time)
+  Target_Delivery  DateTime? // วันที่ส่งมอบที่ตั้งเป้า (Date/Time)
+  PI_Reg_Date      DateTime? // วันที่ลงทะเบียน PI (Date/Time)
+  Pt_Complete_Date DateTime? // วันที่เสร็จสมบูรณ์ชิ้นส่วน (Date/Time)
+  Pt_I_Date        DateTime? // วันที่ I (Date/Time)
+  Pt_Shipment_Date DateTime? // วันที่ส่งชิ้นส่วน (Date/Time)
+  Pt_Calc_Date     DateTime? // วันที่คำนวณชิ้นส่วน (Date/Time)
+  Pt_Confirm_Date  DateTime? // วันที่ยืนยันการส่งมอบ (Date/Time)
+  PI_Upd_Date      DateTime? // วันที่อัปเดต PI (Date/Time)
+  Pl_Month_Plan    Boolean? // แผนเดือน (Yes/No)
+  PI_Wweek_Plan    Boolean? // แผนสัปดาห์ (Yes/No)
+  PI_Today_Plan    Boolean? // แผนวันนี้ (Yes/No)
+  Pt_CAT1          Boolean? // หมวดหมู่ชิ้นส่วน 1 (Yes/No)
+  Pt_CAT2          Boolean? // หมวดหมู่ชิ้นส่วน 2 (Yes/No)
+  Pt_CAT3          Boolean? // หมวดหมู่ชิ้นส่วน 3 (Yes/No)
+  Money_Object     Boolean? // วัตถุเงิน (Yes/No)
+  Outside          Boolean? // ภายนอก (Yes/No)
+  Pt_Pending       Boolean? // อยู่ระหว่างรอ (Yes/No)
+  Info1            String? // ข้อมูลเพิ่มเติม 1 (Short Text)
+  Info2            String? // ข้อมูลเพิ่มเติม 2 (Short Text)
+  Info3            String? // ข้อมูลเพิ่มเติม 3 (Short Text)
+  Info4            String? // ข้อมูลเพิ่มเติม 4 (Short Text)
+  Info5            String? // ข้อมูลเพิ่มเติม 5 (Short Text)
+  Info6            String? // ข้อมูลเพิ่มเติม 6 (Short Text)
+  Info_Chk1        Boolean? // ตรวจสอบข้อมูล 1 (Yes/No)
+  Info_Chk2        Boolean? // ตรวจสอบข้อมูล 2 (Yes/No)
+  Info_Chk3        Boolean? // ตรวจสอบข้อมูล 3 (Yes/No)
+  Info_Chk4        Boolean? // ตรวจสอบข้อมูล 4 (Yes/No)
+  Info_Chk5        Boolean? // ตรวจสอบข้อมูล 5 (Yes/No)
+  Info_Chk6        Boolean? // ตรวจสอบข้อมูล 6 (Yes/No)
+  Max_No           String? // หมายเลขสูงสุด (Short Text)
+  End_No           String? // หมายเลขสิ้นสุด (Short Text)
+  Now_No           String? // หมายเลขปัจจุบัน (Short Text)
+  Total_M_Time     Int? // เวลาทั้งหมด M (Number)
+  Total_P_Time     Int? // เวลาทั้งหมด P (Number)
+  Re_Pr_Qty        Int? // จำนวน Re-Pr (Number)
+  Re_Total_M_Time  Int? // เวลาทั้งหมด M ที่ Re (Number)
+  Re_Total_P_Time  Int? // เวลาทั้งหมด P ที่ Re (Number)
+  Re_Total_N_Time  Int? // เวลาทั้งหมด N ที่ Re (Number)
+  Re_Days          Int? // จำนวนวันที่ Re (Number)
+  Re_Days_CAT      Int? // จำนวนวันที่ Re (Category) (Number)
+  Re_Days_Work_R   Int? // จำนวนวันทำงาน R (Number)
+  Re_Days_Work_P   Int? // จำนวนวันทำงาน P (Number)
+  Re_Pr_Qty_P      Int? // จำนวน Re-Pr P (Number)
+  Priority_P       Int? // ความสำคัญ P (Number)
+  Join_P           Int? // เข้าร่วม P (Number)
+  Priority_Rate    Int? // อัตราความสำคัญ (Number)
+  PPC1             String? // PPC 1 (Short Text)
+  PPC2             String? // PPC 2 (Short Text)
+  PPC3             String? // PPC 3 (Short Text)
+  PPC4             String? // PPC 4 (Short Text)
+  PPC5             String? // PPC 5 (Short Text)
+  PPC6             String? // PPC 6 (Short Text)
+  PPC7             String? // PPC 7 (Short Text)
+  PPC8             String? // PPC 8 (Short Text)
+  PPC9             String? // PPC 9 (Short Text)
+  PPC10            String? // PPC 10 (Short Text)
+  PPC11            String? // PPC 11 (Short Text)
+  PPC12            String? // PPC 12 (Short Text)
+  PPC13            String? // PPC 13 (Short Text)
+  PPC14            String? // PPC 14 (Short Text)
+  PPC15            String? // PPC 15 (Short Text)
+  PPC16            String? // PPC 16 (Short Text)
+  PPC17            String? // PPC 17 (Short Text)
+  PPC18            String? // PPC 18 (Short Text)
+  PPC19            String? // PPC 19 (Short Text)
+  PPC20            String? // PPC 20 (Short Text)
+  PPC21            String? // PPC 21 (Short Text)
+  PPC22            String? // PPC 22 (Short Text)
+  PPC23            String? // PPC 23 (Short Text)
+  PPC24            String? // PPC 24 (Short Text)
+  PPC25            String? // PPC 25 (Short Text)
+  PPC26            String? // PPC 26 (Short Text)
+  PPC27            String? // PPC 27 (Short Text)
+  PPC28            String? // PPC 28 (Short Text)
+  PPC29            String? // PPC 29 (Short Text)
+  PPC30            String? // PPC 30 (Short Text)
+  PPC31            String? // PPC 31 (Short Text)
+  PPC32            String? // PPC 32 (Short Text)
+  PPC33            String? // PPC 33 (Short Text)
+  PPC34            String? // PPC 34 (Short Text)
+  PPC35            String? // PPC 35 (Short Text)
+  PPC36            String? // PPC 36 (Short Text)
+  PMT1             Int? // PMT 1 (Number)
+  PMT2             Int? // PMT 2 (Number)
+  PMT3             Int? // PMT 3 (Number)
+  PMT4             Int? // PMT 4 (Number)
+  PMT5             Int? // PMT 5 (Number)
+  PMT6             Int? // PMT 6 (Number)
+  PMT7             Int? // PMT 7 (Number)
+  PMT8             Int? // PMT 8 (Number)
+  PMT9             Int? // PMT 9 (Number)
+  PMT10            Int? // PMT 10 (Number)
+  PMT11            Int? // PMT 11 (Number)
+  PMT12            Int? // PMT 12 (Number)
+  PMT13            Int? // PMT 13 (Number)
+  PMT14            Int? // PMT 14 (Number)
+  PMT15            Int? // PMT 15 (Number)
+  PMT16            Int? // PMT 16 (Number)
+  PMT17            Int? // PMT 17 (Number)
+  PMT18            Int? // PMT 18 (Number)
+  PMT19            Int? // PMT 19 (Number)
+  PMT20            Int? // PMT 20 (Number)
+  PMT21            Int? // PMT 21 (Number)
+  PMT22            Int? // PMT 22 (Number)
+  PMT23            Int? // PMT 23 (Number)
+  PMT24            Int? // PMT 24 (Number)
+  PMT25            Int? // PMT 25 (Number)
+  PMT26            Int? // PMT 26 (Number)
+  PMT27            Int? // PMT 27 (Number)
+  PMT28            Int? // PMT 28 (Number)
+  PMT29            Int? // PMT 29 (Number)
+  PMT30            Int? // PMT 30 (Number)
+  PMT31            Int? // PMT 31 (Number)
+  PMT32            Int? // PMT 32 (Number)
+  PMT33            Int? // PMT 33 (Number)
+  PMT34            Int? // PMT 34 (Number)
+  PMT35            Int? // PMT 35 (Number)
+  PMT36            Int? // PMT 36 (Number)
+  // ความสัมพันธ์กับ TD_Cost (One-to-Many)
+  costs            TD_Cost[]    @relation("PlanToCost")
+  // ความสัมพันธ์ one-to-one กับ TD_Schedule
+  schedule         TD_Schedule? @relation("SchedulePlan")
+  order            TD_Order     @relation("OrderToPlan", fields: [Order_No], references: [Order_No])
+  Result           TD_Result?   @relation(fields: [Order_No, Parts_No], references: [Order_No, Parts_No]) // เชื่อมโยงไปยัง TD_Result
+  // ความสัมพันธ์ one-to-many กับ TD_WIP
+  wips             TD_WIP[]     @relation("PlanToWIP")
 
-    @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
+  @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
 }
 
 model TD_Result {
-    Order_No         String // หมายเลขคำสั่ง (Short Text)
-    Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
-    OdPt_No          String? // หมายเลข OdPt (Short Text)
-    Rs_Reg_Date      DateTime? // วันที่ลงทะเบียน (Date/Time)
-    Rs_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน (Short Text)
-    Rs_Upd_Date      DateTime? // วันที่อัปเดต (Date/Time)
-    Rs_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต (Short Text)
+  Order_No         String // หมายเลขคำสั่ง (Short Text)
+  Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
+  OdPt_No          String? // หมายเลข OdPt (Short Text)
+  Rs_Reg_Date      DateTime? // วันที่ลงทะเบียน (Date/Time)
+  Rs_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน (Short Text)
+  Rs_Upd_Date      DateTime? // วันที่อัปเดต (Date/Time)
+  Rs_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต (Short Text)
 
-    RPC1  String? // RPC 1 (Short Text)
-    RPC2  String? // RPC 2 (Short Text)
-    RPC3  String? // RPC 3 (Short Text)
-    RPC4  String? // RPC 4 (Short Text)
-    RPC5  String? // RPC 5 (Short Text)
-    RPC6  String? // RPC 6 (Short Text)
-    RPC7  String? // RPC 7 (Short Text)
-    RPC8  String? // RPC 8 (Short Text)
-    RPC9  String? // RPC 9 (Short Text)
-    RPC10 String? // RPC 10 (Short Text)
-    RPC11 String? // RPC 11 (Short Text)
-    RPC12 String? // RPC 12 (Short Text)
-    RPC13 String? // RPC 13 (Short Text)
-    RPC14 String? // RPC 14 (Short Text)
-    RPC15 String? // RPC 15 (Short Text)
-    RPC16 String? // RPC 16 (Short Text)
-    RPC17 String? // RPC 17 (Short Text)
-    RPC18 String? // RPC 18 (Short Text)
-    RPC19 String? // RPC 19 (Short Text)
-    RPC20 String? // RPC 20 (Short Text)
-    RPC21 String? // RPC 21 (Short Text)
-    RPC22 String? // RPC 22 (Short Text)
-    RPC23 String? // RPC 23 (Short Text)
-    RPC24 String? // RPC 24 (Short Text)
-    RPC25 String? // RPC 25 (Short Text)
-    RPC26 String? // RPC 26 (Short Text)
-    RPC27 String? // RPC 27 (Short Text)
-    RPC28 String? // RPC 28 (Short Text)
-    RPC29 String? // RPC 29 (Short Text)
-    RPC30 String? // RPC 30 (Short Text)
-    RPC31 String? // RPC 31 (Short Text)
-    RPC32 String? // RPC 32 (Short Text)
-    RPC33 String? // RPC 33 (Short Text)
-    RPC34 String? // RPC 34 (Short Text)
-    RPC35 String? // RPC 35 (Short Text)
-    RPC36 String? // RPC 36 (Short Text)
+  RPC1  String? // RPC 1 (Short Text)
+  RPC2  String? // RPC 2 (Short Text)
+  RPC3  String? // RPC 3 (Short Text)
+  RPC4  String? // RPC 4 (Short Text)
+  RPC5  String? // RPC 5 (Short Text)
+  RPC6  String? // RPC 6 (Short Text)
+  RPC7  String? // RPC 7 (Short Text)
+  RPC8  String? // RPC 8 (Short Text)
+  RPC9  String? // RPC 9 (Short Text)
+  RPC10 String? // RPC 10 (Short Text)
+  RPC11 String? // RPC 11 (Short Text)
+  RPC12 String? // RPC 12 (Short Text)
+  RPC13 String? // RPC 13 (Short Text)
+  RPC14 String? // RPC 14 (Short Text)
+  RPC15 String? // RPC 15 (Short Text)
+  RPC16 String? // RPC 16 (Short Text)
+  RPC17 String? // RPC 17 (Short Text)
+  RPC18 String? // RPC 18 (Short Text)
+  RPC19 String? // RPC 19 (Short Text)
+  RPC20 String? // RPC 20 (Short Text)
+  RPC21 String? // RPC 21 (Short Text)
+  RPC22 String? // RPC 22 (Short Text)
+  RPC23 String? // RPC 23 (Short Text)
+  RPC24 String? // RPC 24 (Short Text)
+  RPC25 String? // RPC 25 (Short Text)
+  RPC26 String? // RPC 26 (Short Text)
+  RPC27 String? // RPC 27 (Short Text)
+  RPC28 String? // RPC 28 (Short Text)
+  RPC29 String? // RPC 29 (Short Text)
+  RPC30 String? // RPC 30 (Short Text)
+  RPC31 String? // RPC 31 (Short Text)
+  RPC32 String? // RPC 32 (Short Text)
+  RPC33 String? // RPC 33 (Short Text)
+  RPC34 String? // RPC 34 (Short Text)
+  RPC35 String? // RPC 35 (Short Text)
+  RPC36 String? // RPC 36 (Short Text)
 
-    RPD1  DateTime? // วันที่ RPD 1 (Date/Time)
-    RPD2  DateTime? // วันที่ RPD 2 (Date/Time)
-    RPD3  DateTime? // วันที่ RPD 3 (Date/Time)
-    RPD4  DateTime? // วันที่ RPD 4 (Date/Time)
-    RPD5  DateTime? // วันที่ RPD 5 (Date/Time)
-    RPD6  DateTime? // วันที่ RPD 6 (Date/Time)
-    RPD7  DateTime? // วันที่ RPD 7 (Date/Time)
-    RPD8  DateTime? // วันที่ RPD 8 (Date/Time)
-    RPD9  DateTime? // วันที่ RPD 9 (Date/Time)
-    RPD10 DateTime? // วันที่ RPD 10 (Date/Time)
-    RPD11 DateTime? // วันที่ RPD 11 (Date/Time)
-    RPD12 DateTime? // วันที่ RPD 12 (Date/Time)
-    RPD13 DateTime? // วันที่ RPD 13 (Date/Time)
-    RPD14 DateTime? // วันที่ RPD 14 (Date/Time)
-    RPD15 DateTime? // วันที่ RPD 15 (Date/Time)
-    RPD16 DateTime? // วันที่ RPD 16 (Date/Time)
-    RPD17 DateTime? // วันที่ RPD 17 (Date/Time)
-    RPD18 DateTime? // วันที่ RPD 18 (Date/Time)
-    RPD19 DateTime? // วันที่ RPD 19 (Date/Time)
-    RPD20 DateTime? // วันที่ RPD 20 (Date/Time)
-    RPD21 DateTime? // วันที่ RPD 21 (Date/Time)
-    RPD22 DateTime? // วันที่ RPD 22 (Date/Time)
-    RPD23 DateTime? // วันที่ RPD 23 (Date/Time)
-    RPD24 DateTime? // วันที่ RPD 24 (Date/Time)
-    RPD25 DateTime? // วันที่ RPD 25 (Date/Time)
-    RPD26 DateTime? // วันที่ RPD 26 (Date/Time)
-    RPD27 DateTime? // วันที่ RPD 27 (Date/Time)
-    RPD28 DateTime? // วันที่ RPD 28 (Date/Time)
-    RPD29 DateTime? // วันที่ RPD 29 (Date/Time)
-    RPD30 DateTime? // วันที่ RPD 30 (Date/Time)
-    RPD31 DateTime? // วันที่ RPD 31 (Date/Time)
-    RPD32 DateTime? // วันที่ RPD 32 (Date/Time)
-    RPD33 DateTime? // วันที่ RPD 33 (Date/Time)
-    RPD34 DateTime? // วันที่ RPD 34 (Date/Time)
-    RPD35 DateTime? // วันที่ RPD 35 (Date/Time)
-    RPD36 DateTime? // วันที่ RPD 36 (Date/Time)
+  RPD1  DateTime? // วันที่ RPD 1 (Date/Time)
+  RPD2  DateTime? // วันที่ RPD 2 (Date/Time)
+  RPD3  DateTime? // วันที่ RPD 3 (Date/Time)
+  RPD4  DateTime? // วันที่ RPD 4 (Date/Time)
+  RPD5  DateTime? // วันที่ RPD 5 (Date/Time)
+  RPD6  DateTime? // วันที่ RPD 6 (Date/Time)
+  RPD7  DateTime? // วันที่ RPD 7 (Date/Time)
+  RPD8  DateTime? // วันที่ RPD 8 (Date/Time)
+  RPD9  DateTime? // วันที่ RPD 9 (Date/Time)
+  RPD10 DateTime? // วันที่ RPD 10 (Date/Time)
+  RPD11 DateTime? // วันที่ RPD 11 (Date/Time)
+  RPD12 DateTime? // วันที่ RPD 12 (Date/Time)
+  RPD13 DateTime? // วันที่ RPD 13 (Date/Time)
+  RPD14 DateTime? // วันที่ RPD 14 (Date/Time)
+  RPD15 DateTime? // วันที่ RPD 15 (Date/Time)
+  RPD16 DateTime? // วันที่ RPD 16 (Date/Time)
+  RPD17 DateTime? // วันที่ RPD 17 (Date/Time)
+  RPD18 DateTime? // วันที่ RPD 18 (Date/Time)
+  RPD19 DateTime? // วันที่ RPD 19 (Date/Time)
+  RPD20 DateTime? // วันที่ RPD 20 (Date/Time)
+  RPD21 DateTime? // วันที่ RPD 21 (Date/Time)
+  RPD22 DateTime? // วันที่ RPD 22 (Date/Time)
+  RPD23 DateTime? // วันที่ RPD 23 (Date/Time)
+  RPD24 DateTime? // วันที่ RPD 24 (Date/Time)
+  RPD25 DateTime? // วันที่ RPD 25 (Date/Time)
+  RPD26 DateTime? // วันที่ RPD 26 (Date/Time)
+  RPD27 DateTime? // วันที่ RPD 27 (Date/Time)
+  RPD28 DateTime? // วันที่ RPD 28 (Date/Time)
+  RPD29 DateTime? // วันที่ RPD 29 (Date/Time)
+  RPD30 DateTime? // วันที่ RPD 30 (Date/Time)
+  RPD31 DateTime? // วันที่ RPD 31 (Date/Time)
+  RPD32 DateTime? // วันที่ RPD 32 (Date/Time)
+  RPD33 DateTime? // วันที่ RPD 33 (Date/Time)
+  RPD34 DateTime? // วันที่ RPD 34 (Date/Time)
+  RPD35 DateTime? // วันที่ RPD 35 (Date/Time)
+  RPD36 DateTime? // วันที่ RPD 36 (Date/Time)
 
-    RMT1  Float? // RMT 1 (Number)
-    RMT2  Float? // RMT 2 (Number)
-    RMT3  Float? // RMT 3 (Number)
-    RMT4  Float? // RMT 4 (Number)
-    RMT5  Float? // RMT 5 (Number)
-    RMT6  Float? // RMT 6 (Number)
-    RMT7  Float? // RMT 7 (Number)
-    RMT8  Float? // RMT 8 (Number)
-    RMT9  Float? // RMT 9 (Number)
-    RMT10 Float? // RMT 10 (Number)
-    RMT11 Float? // RMT 11 (Number)
-    RMT12 Float? // RMT 12 (Number)
-    RMT13 Float? // RMT 13 (Number)
-    RMT14 Float? // RMT 14 (Number)
-    RMT15 Float? // RMT 15 (Number)
-    RMT16 Float? // RMT 16 (Number)
-    RMT17 Float? // RMT 17 (Number)
-    RMT18 Float? // RMT 18 (Number)
-    RMT19 Float? // RMT 19 (Number)
-    RMT20 Float? // RMT 20 (Number)
-    RMT21 Float? // RMT 21 (Number)
-    RMT22 Float? // RMT 22 (Number)
-    RMT23 Float? // RMT 23 (Number)
-    RMT24 Float? // RMT 24 (Number)
-    RMT25 Float? // RMT 25 (Number)
-    RMT26 Float? // RMT 26 (Number)
-    RMT27 Float? // RMT 27 (Number)
-    RMT28 Float? // RMT 28 (Number)
-    RMT29 Float? // RMT 29 (Number)
-    RMT30 Float? // RMT 30 (Number)
-    RMT31 Float? // RMT 31 (Number)
-    RMT32 Float? // RMT 32 (Number)
-    RMT33 Float? // RMT 33 (Number)
-    RMT34 Float? // RMT 34 (Number)
-    RMT35 Float? // RMT 35 (Number)
-    RMT36 Float? // RMT 36 (Number)
+  RMT1  Float? // RMT 1 (Number)
+  RMT2  Float? // RMT 2 (Number)
+  RMT3  Float? // RMT 3 (Number)
+  RMT4  Float? // RMT 4 (Number)
+  RMT5  Float? // RMT 5 (Number)
+  RMT6  Float? // RMT 6 (Number)
+  RMT7  Float? // RMT 7 (Number)
+  RMT8  Float? // RMT 8 (Number)
+  RMT9  Float? // RMT 9 (Number)
+  RMT10 Float? // RMT 10 (Number)
+  RMT11 Float? // RMT 11 (Number)
+  RMT12 Float? // RMT 12 (Number)
+  RMT13 Float? // RMT 13 (Number)
+  RMT14 Float? // RMT 14 (Number)
+  RMT15 Float? // RMT 15 (Number)
+  RMT16 Float? // RMT 16 (Number)
+  RMT17 Float? // RMT 17 (Number)
+  RMT18 Float? // RMT 18 (Number)
+  RMT19 Float? // RMT 19 (Number)
+  RMT20 Float? // RMT 20 (Number)
+  RMT21 Float? // RMT 21 (Number)
+  RMT22 Float? // RMT 22 (Number)
+  RMT23 Float? // RMT 23 (Number)
+  RMT24 Float? // RMT 24 (Number)
+  RMT25 Float? // RMT 25 (Number)
+  RMT26 Float? // RMT 26 (Number)
+  RMT27 Float? // RMT 27 (Number)
+  RMT28 Float? // RMT 28 (Number)
+  RMT29 Float? // RMT 29 (Number)
+  RMT30 Float? // RMT 30 (Number)
+  RMT31 Float? // RMT 31 (Number)
+  RMT32 Float? // RMT 32 (Number)
+  RMT33 Float? // RMT 33 (Number)
+  RMT34 Float? // RMT 34 (Number)
+  RMT35 Float? // RMT 35 (Number)
+  RMT36 Float? // RMT 36 (Number)
 
-    RPT1  Float? // RPT 1 (Number)
-    RPT2  Float? // RPT 2 (Number)
-    RPT3  Float? // RPT 3 (Number)
-    RPT4  Float? // RPT 4 (Number)
-    RPT5  Float? // RPT 5 (Number)
-    RPT6  Float? // RPT 6 (Number)
-    RPT7  Float? // RPT 7 (Number)
-    RPT8  Float? // RPT 8 (Number)
-    RPT9  Float? // RPT 9 (Number)
-    RPT10 Float? // RPT 10 (Number)
-    RPT11 Float? // RPT 11 (Number)
-    RPT12 Float? // RPT 12 (Number)
-    RPT13 Float? // RPT 13 (Number)
-    RPT14 Float? // RPT 14 (Number)
-    RPT15 Float? // RPT 15 (Number)
-    RPT16 Float? // RPT 16 (Number)
-    RPT17 Float? // RPT 17 (Number)
-    RPT18 Float? // RPT 18 (Number)
-    RPT19 Float? // RPT 19 (Number)
-    RPT20 Float? // RPT 20 (Number)
-    RPT21 Float? // RPT 21 (Number)
-    RPT22 Float? // RPT 22 (Number)
-    RPT23 Float? // RPT 23 (Number)
-    RPT24 Float? // RPT 24 (Number)
-    RPT25 Float? // RPT 25 (Number)
-    RPT26 Float? // RPT 26 (Number)
-    RPT27 Float? // RPT 27 (Number)
-    RPT28 Float? // RPT 28 (Number)
-    RPT29 Float? // RPT 29 (Number)
-    RPT30 Float? // RPT 30 (Number)
-    RPT31 Float? // RPT 31 (Number)
-    RPT32 Float? // RPT 32 (Number)
-    RPT33 Float? // RPT 33 (Number)
-    RPT34 Float? // RPT 34 (Number)
-    RPT35 Float? // RPT 35 (Number)
-    RPT36 Float? // RPT 36 (Number)
+  RPT1  Float? // RPT 1 (Number)
+  RPT2  Float? // RPT 2 (Number)
+  RPT3  Float? // RPT 3 (Number)
+  RPT4  Float? // RPT 4 (Number)
+  RPT5  Float? // RPT 5 (Number)
+  RPT6  Float? // RPT 6 (Number)
+  RPT7  Float? // RPT 7 (Number)
+  RPT8  Float? // RPT 8 (Number)
+  RPT9  Float? // RPT 9 (Number)
+  RPT10 Float? // RPT 10 (Number)
+  RPT11 Float? // RPT 11 (Number)
+  RPT12 Float? // RPT 12 (Number)
+  RPT13 Float? // RPT 13 (Number)
+  RPT14 Float? // RPT 14 (Number)
+  RPT15 Float? // RPT 15 (Number)
+  RPT16 Float? // RPT 16 (Number)
+  RPT17 Float? // RPT 17 (Number)
+  RPT18 Float? // RPT 18 (Number)
+  RPT19 Float? // RPT 19 (Number)
+  RPT20 Float? // RPT 20 (Number)
+  RPT21 Float? // RPT 21 (Number)
+  RPT22 Float? // RPT 22 (Number)
+  RPT23 Float? // RPT 23 (Number)
+  RPT24 Float? // RPT 24 (Number)
+  RPT25 Float? // RPT 25 (Number)
+  RPT26 Float? // RPT 26 (Number)
+  RPT27 Float? // RPT 27 (Number)
+  RPT28 Float? // RPT 28 (Number)
+  RPT29 Float? // RPT 29 (Number)
+  RPT30 Float? // RPT 30 (Number)
+  RPT31 Float? // RPT 31 (Number)
+  RPT32 Float? // RPT 32 (Number)
+  RPT33 Float? // RPT 33 (Number)
+  RPT34 Float? // RPT 34 (Number)
+  RPT35 Float? // RPT 35 (Number)
+  RPT36 Float? // RPT 36 (Number)
 
-    RPN1  String? // RPN 1 (Short Text)
-    RPN2  String? // RPN 2 (Short Text)
-    RPN3  String? // RPN 3 (Short Text)
-    RPN4  String? // RPN 4 (Short Text)
-    RPN5  String? // RPN 5 (Short Text)
-    RPN6  String? // RPN 6 (Short Text)
-    RPN7  String? // RPN 7 (Short Text)
-    RPN8  String? // RPN 8 (Short Text)
-    RPN9  String? // RPN 9 (Short Text)
-    RPN10 String? // RPN 10 (Short Text)
-    RPN11 String? // RPN 11 (Short Text)
-    RPN12 String? // RPN 12 (Short Text)
-    RPN13 String? // RPN 13 (Short Text)
-    RPN14 String? // RPN 14 (Short Text)
-    RPN15 String? // RPN 15 (Short Text)
-    RPN16 String? // RPN 16 (Short Text)
-    RPN17 String? // RPN 17 (Short Text)
-    RPN18 String? // RPN 18 (Short Text)
-    RPN19 String? // RPN 19 (Short Text)
-    RPN20 String? // RPN 20 (Short Text)
-    RPN21 String? // RPN 21 (Short Text)
-    RPN22 String? // RPN 22 (Short Text)
-    RPN23 String? // RPN 23 (Short Text)
-    RPN24 String? // RPN 24 (Short Text)
-    RPN25 String? // RPN 25 (Short Text)
-    RPN26 String? // RPN 26 (Short Text)
-    RPN27 String? // RPN 27 (Short Text)
-    RPN28 String? // RPN 28 (Short Text)
-    RPN29 String? // RPN 29 (Short Text)
-    RPN30 String? // RPN 30 (Short Text)
-    RPN31 String? // RPN 31 (Short Text)
-    RPN32 String? // RPN 32 (Short Text)
-    RPN33 String? // RPN 33 (Short Text)
-    RPN34 String? // RPN 34 (Short Text)
-    RPN35 String? // RPN 35 (Short Text)
-    RPN36 String? // RPN 36 (Short Text)
+  RPN1  String? // RPN 1 (Short Text)
+  RPN2  String? // RPN 2 (Short Text)
+  RPN3  String? // RPN 3 (Short Text)
+  RPN4  String? // RPN 4 (Short Text)
+  RPN5  String? // RPN 5 (Short Text)
+  RPN6  String? // RPN 6 (Short Text)
+  RPN7  String? // RPN 7 (Short Text)
+  RPN8  String? // RPN 8 (Short Text)
+  RPN9  String? // RPN 9 (Short Text)
+  RPN10 String? // RPN 10 (Short Text)
+  RPN11 String? // RPN 11 (Short Text)
+  RPN12 String? // RPN 12 (Short Text)
+  RPN13 String? // RPN 13 (Short Text)
+  RPN14 String? // RPN 14 (Short Text)
+  RPN15 String? // RPN 15 (Short Text)
+  RPN16 String? // RPN 16 (Short Text)
+  RPN17 String? // RPN 17 (Short Text)
+  RPN18 String? // RPN 18 (Short Text)
+  RPN19 String? // RPN 19 (Short Text)
+  RPN20 String? // RPN 20 (Short Text)
+  RPN21 String? // RPN 21 (Short Text)
+  RPN22 String? // RPN 22 (Short Text)
+  RPN23 String? // RPN 23 (Short Text)
+  RPN24 String? // RPN 24 (Short Text)
+  RPN25 String? // RPN 25 (Short Text)
+  RPN26 String? // RPN 26 (Short Text)
+  RPN27 String? // RPN 27 (Short Text)
+  RPN28 String? // RPN 28 (Short Text)
+  RPN29 String? // RPN 29 (Short Text)
+  RPN30 String? // RPN 30 (Short Text)
+  RPN31 String? // RPN 31 (Short Text)
+  RPN32 String? // RPN 32 (Short Text)
+  RPN33 String? // RPN 33 (Short Text)
+  RPN34 String? // RPN 34 (Short Text)
+  RPN35 String? // RPN 35 (Short Text)
+  RPN36 String? // RPN 36 (Short Text)
 
-    Rs_Remark String? // หมายเหตุ (Long Text)
-    TD_Plan   TD_Plan? @relation
+  Rs_Remark String? // หมายเหตุ (Long Text)
+  TD_Plan   TD_Plan? @relation
 
-    @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
+  @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
 }
 
 model TD_Cost {
-    Order_No              String // หมายเลขคำสั่ง (Short Text)
-    Parts_No              String // หมายเลขชิ้นส่วน (Short Text)
-    Cost_No               String // หมายเลขค่าใช้จ่าย (Short Text)
-    Process_No            String? // หมายเลขกระบวนการ (Short Text)
-    OdPt_No               String? // หมายเลข OdPt (Short Text)
-    OdPtCs_No             String? // หมายเลข OdPtCs (Short Text)
-    OdPtPr_No             String? // หมายเลข OdPtPr (Short Text)
-    CMC                   String? // CMC (Short Text)
-    CMT                   String? // CMT (Short Text)
-    CPC                   String? // CPC (Short Text)
-    CPT                   String? // CPT (Short Text)
-    CPD                   String? // CPD (Short Text)
-    CPN                   String? // CPN (Short Text)
-    Cs_Progress_CD        String? // รหัสความคืบหน้า (Short Text)
-    Cs_Complete_Date      DateTime? // วันที่ทำเสร็จสมบูรณ์ (Date/Time)
-    Cs_Complete_Qty       Float? // จำนวนที่ทำเสร็จ (Number)
-    Cs_Label_CSV          Boolean? // CSV (Yes/No)
-    Cs_All_Complete       Boolean? // เสร็จทั้งหมด (Yes/No)
-    Cs_Order_All_Complete Boolean? // คำสั่งทั้งหมดเสร็จสิ้น (Yes/No)
-    Cs_Parts_Complete     Boolean? // ชิ้นส่วนเสร็จสิ้น (Yes/No)
-    Cs_Final_Complete     Boolean? // เสร็จสมบูรณ์ทั้งหมด (Yes/No)
-    Cs_Modify_Date        DateTime? // วันที่แก้ไข (Date/Time)
-    Cs_Remark             String? // ข้อสังเกต (Short Text)
-    Cs_Register_Date      DateTime? // วันที่ลงทะเบียน (Date/Time)
-    Cs_Reg_Person_CD      String? // รหัสผู้ลงทะเบียน (Short Text)
-    Cs_Upd_Person_CD      String? // รหัสผู้ปรับปรุง (Short Text)
-    Sequence_No           Float? // ลำดับ (Number)
-    // เชื่อมความสัมพันธ์กับ TD_Plan (Many-to-One)
-    plan                  TD_Plan   @relation(fields: [Order_No, Parts_No], references: [Order_No, Parts_No], name: "PlanToCost")
+  Order_No              String // หมายเลขคำสั่ง (Short Text)
+  Parts_No              String // หมายเลขชิ้นส่วน (Short Text)
+  Cost_No               String // หมายเลขค่าใช้จ่าย (Short Text)
+  Process_No            String? // หมายเลขกระบวนการ (Short Text)
+  OdPt_No               String? // หมายเลข OdPt (Short Text)
+  OdPtCs_No             String? // หมายเลข OdPtCs (Short Text)
+  OdPtPr_No             String? // หมายเลข OdPtPr (Short Text)
+  CMC                   String? // CMC (Short Text)
+  CMT                   String? // CMT (Short Text)
+  CPC                   String? // CPC (Short Text)
+  CPT                   String? // CPT (Short Text)
+  CPD                   String? // CPD (Short Text)
+  CPN                   String? // CPN (Short Text)
+  Cs_Progress_CD        String? // รหัสความคืบหน้า (Short Text)
+  Cs_Complete_Date      DateTime? // วันที่ทำเสร็จสมบูรณ์ (Date/Time)
+  Cs_Complete_Qty       Float? // จำนวนที่ทำเสร็จ (Number)
+  Cs_Label_CSV          Boolean? // CSV (Yes/No)
+  Cs_All_Complete       Boolean? // เสร็จทั้งหมด (Yes/No)
+  Cs_Order_All_Complete Boolean? // คำสั่งทั้งหมดเสร็จสิ้น (Yes/No)
+  Cs_Parts_Complete     Boolean? // ชิ้นส่วนเสร็จสิ้น (Yes/No)
+  Cs_Final_Complete     Boolean? // เสร็จสมบูรณ์ทั้งหมด (Yes/No)
+  Cs_Modify_Date        DateTime? // วันที่แก้ไข (Date/Time)
+  Cs_Remark             String? // ข้อสังเกต (Short Text)
+  Cs_Register_Date      DateTime? // วันที่ลงทะเบียน (Date/Time)
+  Cs_Reg_Person_CD      String? // รหัสผู้ลงทะเบียน (Short Text)
+  Cs_Upd_Person_CD      String? // รหัสผู้ปรับปรุง (Short Text)
+  Sequence_No           Float? // ลำดับ (Number)
+  // เชื่อมความสัมพันธ์กับ TD_Plan (Many-to-One)
+  plan                  TD_Plan   @relation(fields: [Order_No, Parts_No], references: [Order_No, Parts_No], name: "PlanToCost")
 
-    @@id([Order_No, Parts_No, Cost_No]) // กำหนดคีย์หลักร่วมกัน
+  @@id([Order_No, Parts_No, Cost_No]) // กำหนดคีย์หลักร่วมกัน
 }
 
 model TD_Schedule {
-    Order_No         String // หมายเลขคำสั่ง
-    Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
-    Schedule_No      String? // หมายเลขกำหนดการ
-    Sc_Choice        String? // ตัวเลือกกำหนดการ
-    Schedule_CD      String? // รหัสกำหนดการ
-    Sc_Reg_Date      DateTime? // วันที่ลงทะเบียน
-    Sc_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน
-    Sc_Upd_Date      DateTime? // วันที่อัปเดต
-    Sc_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต
+  Order_No         String // หมายเลขคำสั่ง
+  Parts_No         String // หมายเลขชิ้นส่วน (Short Text)
+  Schedule_No      String? // หมายเลขกำหนดการ
+  Sc_Choice        String? // ตัวเลือกกำหนดการ
+  Schedule_CD      String? // รหัสกำหนดการ
+  Sc_Reg_Date      DateTime? // วันที่ลงทะเบียน
+  Sc_Reg_Person_CD String? // รหัสบุคคลที่ลงทะเบียน
+  Sc_Upd_Date      DateTime? // วันที่อัปเดต
+  Sc_Upd_Person_CD String? // รหัสบุคคลที่อัปเดต
 
-    // ฟิลด์ PPD
-    PPD1  DateTime?
-    PPD2  DateTime?
-    PPD3  DateTime?
-    PPD4  DateTime?
-    PPD5  DateTime?
-    PPD6  DateTime?
-    PPD7  DateTime?
-    PPD8  DateTime?
-    PPD9  DateTime?
-    PPD10 DateTime?
-    PPD11 DateTime?
-    PPD12 DateTime?
-    PPD13 DateTime?
-    PPD14 DateTime?
-    PPD15 DateTime?
-    PPD16 DateTime?
-    PPD17 DateTime?
-    PPD18 DateTime?
-    PPD19 DateTime?
-    PPD20 DateTime?
-    PPD21 DateTime?
-    PPD22 DateTime?
-    PPD23 DateTime?
-    PPD24 DateTime?
-    PPD25 DateTime?
-    PPD26 DateTime?
-    PPD27 DateTime?
-    PPD28 DateTime?
-    PPD29 DateTime?
-    PPD30 DateTime?
-    PPD31 DateTime?
-    PPD32 DateTime?
-    PPD33 DateTime?
-    PPD34 DateTime?
-    PPD35 DateTime?
-    PPD36 DateTime?
+  // ฟิลด์ PPD
+  PPD1  DateTime?
+  PPD2  DateTime?
+  PPD3  DateTime?
+  PPD4  DateTime?
+  PPD5  DateTime?
+  PPD6  DateTime?
+  PPD7  DateTime?
+  PPD8  DateTime?
+  PPD9  DateTime?
+  PPD10 DateTime?
+  PPD11 DateTime?
+  PPD12 DateTime?
+  PPD13 DateTime?
+  PPD14 DateTime?
+  PPD15 DateTime?
+  PPD16 DateTime?
+  PPD17 DateTime?
+  PPD18 DateTime?
+  PPD19 DateTime?
+  PPD20 DateTime?
+  PPD21 DateTime?
+  PPD22 DateTime?
+  PPD23 DateTime?
+  PPD24 DateTime?
+  PPD25 DateTime?
+  PPD26 DateTime?
+  PPD27 DateTime?
+  PPD28 DateTime?
+  PPD29 DateTime?
+  PPD30 DateTime?
+  PPD31 DateTime?
+  PPD32 DateTime?
+  PPD33 DateTime?
+  PPD34 DateTime?
+  PPD35 DateTime?
+  PPD36 DateTime?
 
-    // ฟิลด์ PML
-    PML1  Float?
-    PML2  Float?
-    PML3  Float?
-    PML4  Float?
-    PML5  Float?
-    PML6  Float?
-    PML7  Float?
-    PML8  Float?
-    PML9  Float?
-    PML10 Float?
-    PML11 Float?
-    PML12 Float?
-    PML13 Float?
-    PML14 Float?
-    PML15 Float?
-    PML16 Float?
-    PML17 Float?
-    PML18 Float?
-    PML19 Float?
-    PML20 Float?
-    PML21 Float?
-    PML22 Float?
-    PML23 Float?
-    PML24 Float?
-    PML25 Float?
-    PML26 Float?
-    PML27 Float?
-    PML28 Float?
-    PML29 Float?
-    PML30 Float?
-    PML31 Float?
-    PML32 Float?
-    PML33 Float?
-    PML34 Float?
-    PML35 Float?
-    PML36 Float?
+  // ฟิลด์ PML
+  PML1  Float?
+  PML2  Float?
+  PML3  Float?
+  PML4  Float?
+  PML5  Float?
+  PML6  Float?
+  PML7  Float?
+  PML8  Float?
+  PML9  Float?
+  PML10 Float?
+  PML11 Float?
+  PML12 Float?
+  PML13 Float?
+  PML14 Float?
+  PML15 Float?
+  PML16 Float?
+  PML17 Float?
+  PML18 Float?
+  PML19 Float?
+  PML20 Float?
+  PML21 Float?
+  PML22 Float?
+  PML23 Float?
+  PML24 Float?
+  PML25 Float?
+  PML26 Float?
+  PML27 Float?
+  PML28 Float?
+  PML29 Float?
+  PML30 Float?
+  PML31 Float?
+  PML32 Float?
+  PML33 Float?
+  PML34 Float?
+  PML35 Float?
+  PML36 Float?
 
-    // ฟิลด์ PPL
-    PPL1  Float?
-    PPL2  Float?
-    PPL3  Float?
-    PPL4  Float?
-    PPL5  Float?
-    PPL6  Float?
-    PPL7  Float?
-    PPL8  Float?
-    PPL9  Float?
-    PPL10 Float?
-    PPL11 Float?
-    PPL12 Float?
-    PPL13 Float?
-    PPL14 Float?
-    PPL15 Float?
-    PPL16 Float?
-    PPL17 Float?
-    PPL18 Float?
-    PPL19 Float?
-    PPL20 Float?
-    PPL21 Float?
-    PPL22 Float?
-    PPL23 Float?
-    PPL24 Float?
-    PPL25 Float?
-    PPL26 Float?
-    PPL27 Float?
-    PPL28 Float?
-    PPL29 Float?
-    PPL30 Float?
-    PPL31 Float?
-    PPL32 Float?
-    PPL33 Float?
-    PPL34 Float?
-    PPL35 Float?
-    PPL36 Float?
+  // ฟิลด์ PPL
+  PPL1  Float?
+  PPL2  Float?
+  PPL3  Float?
+  PPL4  Float?
+  PPL5  Float?
+  PPL6  Float?
+  PPL7  Float?
+  PPL8  Float?
+  PPL9  Float?
+  PPL10 Float?
+  PPL11 Float?
+  PPL12 Float?
+  PPL13 Float?
+  PPL14 Float?
+  PPL15 Float?
+  PPL16 Float?
+  PPL17 Float?
+  PPL18 Float?
+  PPL19 Float?
+  PPL20 Float?
+  PPL21 Float?
+  PPL22 Float?
+  PPL23 Float?
+  PPL24 Float?
+  PPL25 Float?
+  PPL26 Float?
+  PPL27 Float?
+  PPL28 Float?
+  PPL29 Float?
+  PPL30 Float?
+  PPL31 Float?
+  PPL32 Float?
+  PPL33 Float?
+  PPL34 Float?
+  PPL35 Float?
+  PPL36 Float?
 
-    // ฟิลด์ ASP
-    ASP1  DateTime?
-    ASP2  DateTime?
-    ASP3  DateTime?
-    ASP4  DateTime?
-    ASP5  DateTime?
-    ASP6  DateTime?
-    ASP7  DateTime?
-    ASP8  DateTime?
-    ASP9  DateTime?
-    ASP10 DateTime?
-    ASP11 DateTime?
-    ASP12 DateTime?
-    ASP13 DateTime?
-    ASP14 DateTime?
-    ASP15 DateTime?
-    ASP16 DateTime?
-    ASP17 DateTime?
-    ASP18 DateTime?
-    ASP19 DateTime?
-    ASP20 DateTime?
-    ASP21 DateTime?
-    ASP22 DateTime?
-    ASP23 DateTime?
-    ASP24 DateTime?
-    ASP25 DateTime?
-    ASP26 DateTime?
-    ASP27 DateTime?
-    ASP28 DateTime?
-    ASP29 DateTime?
-    ASP30 DateTime?
-    ASP31 DateTime?
-    ASP32 DateTime?
-    ASP33 DateTime?
-    ASP34 DateTime?
-    ASP35 DateTime?
-    ASP36 DateTime?
+  // ฟิลด์ ASP
+  ASP1  DateTime?
+  ASP2  DateTime?
+  ASP3  DateTime?
+  ASP4  DateTime?
+  ASP5  DateTime?
+  ASP6  DateTime?
+  ASP7  DateTime?
+  ASP8  DateTime?
+  ASP9  DateTime?
+  ASP10 DateTime?
+  ASP11 DateTime?
+  ASP12 DateTime?
+  ASP13 DateTime?
+  ASP14 DateTime?
+  ASP15 DateTime?
+  ASP16 DateTime?
+  ASP17 DateTime?
+  ASP18 DateTime?
+  ASP19 DateTime?
+  ASP20 DateTime?
+  ASP21 DateTime?
+  ASP22 DateTime?
+  ASP23 DateTime?
+  ASP24 DateTime?
+  ASP25 DateTime?
+  ASP26 DateTime?
+  ASP27 DateTime?
+  ASP28 DateTime?
+  ASP29 DateTime?
+  ASP30 DateTime?
+  ASP31 DateTime?
+  ASP32 DateTime?
+  ASP33 DateTime?
+  ASP34 DateTime?
+  ASP35 DateTime?
+  ASP36 DateTime?
 
-    // ฟิลด์ BKD
-    BKD1  DateTime?
-    BKD2  DateTime?
-    BKD3  DateTime?
-    BKD4  DateTime?
-    BKD5  DateTime?
-    BKD6  DateTime?
-    BKD7  DateTime?
-    BKD8  DateTime?
-    BKD9  DateTime?
-    BKD10 DateTime?
-    BKD11 DateTime?
-    BKD12 DateTime?
-    BKD13 DateTime?
-    BKD14 DateTime?
-    BKD15 DateTime?
-    BKD16 DateTime?
-    BKD17 DateTime?
-    BKD18 DateTime?
-    BKD19 DateTime?
-    BKD20 DateTime?
-    BKD21 DateTime?
-    BKD22 DateTime?
-    BKD23 DateTime?
-    BKD24 DateTime?
-    BKD25 DateTime?
-    BKD26 DateTime?
-    BKD27 DateTime?
-    BKD28 DateTime?
-    BKD29 DateTime?
-    BKD30 DateTime?
-    BKD31 DateTime?
-    BKD32 DateTime?
-    BKD33 DateTime?
-    BKD34 DateTime?
-    BKD35 DateTime?
-    BKD36 DateTime?
+  // ฟิลด์ BKD
+  BKD1  DateTime?
+  BKD2  DateTime?
+  BKD3  DateTime?
+  BKD4  DateTime?
+  BKD5  DateTime?
+  BKD6  DateTime?
+  BKD7  DateTime?
+  BKD8  DateTime?
+  BKD9  DateTime?
+  BKD10 DateTime?
+  BKD11 DateTime?
+  BKD12 DateTime?
+  BKD13 DateTime?
+  BKD14 DateTime?
+  BKD15 DateTime?
+  BKD16 DateTime?
+  BKD17 DateTime?
+  BKD18 DateTime?
+  BKD19 DateTime?
+  BKD20 DateTime?
+  BKD21 DateTime?
+  BKD22 DateTime?
+  BKD23 DateTime?
+  BKD24 DateTime?
+  BKD25 DateTime?
+  BKD26 DateTime?
+  BKD27 DateTime?
+  BKD28 DateTime?
+  BKD29 DateTime?
+  BKD30 DateTime?
+  BKD31 DateTime?
+  BKD32 DateTime?
+  BKD33 DateTime?
+  BKD34 DateTime?
+  BKD35 DateTime?
+  BKD36 DateTime?
 
-    // ฟิลด์ INN
-    INN1  String? // Short Text
-    INN2  String? // Short Text
-    INN3  String? // Short Text
-    INN4  String? // Short Text
-    INN5  String? // Short Text
-    INN6  String? // Short Text
-    INN7  String? // Short Text
-    INN8  String? // Short Text
-    INN9  String? // Short Text
-    INN10 String? // Short Text
-    INN11 String? // Short Text
-    INN12 String? // Short Text
-    INN13 String? // Short Text
-    INN14 String? // Short Text
-    INN15 String? // Short Text
-    INN16 String? // Short Text
-    INN17 String? // Short Text
-    INN18 String? // Short Text
-    INN19 String? // Short Text
-    INN20 String? // Short Text
-    INN21 String? // Short Text
-    INN22 String? // Short Text
-    INN23 String? // Short Text
-    INN24 String? // Short Text
-    INN25 String? // Short Text
-    INN26 String? // Short Text
-    INN27 String? // Short Text
-    INN28 String? // Short Text
-    INN29 String? // Short Text
-    INN30 String? // Short Text
-    INN31 String? // Short Text
-    INN32 String? // Short Text
-    INN33 String? // Short Text
-    INN34 String? // Short Text
-    INN35 String? // Short Text
-    INN36 String? // Short Text
+  // ฟิลด์ INN
+  INN1  String? // Short Text
+  INN2  String? // Short Text
+  INN3  String? // Short Text
+  INN4  String? // Short Text
+  INN5  String? // Short Text
+  INN6  String? // Short Text
+  INN7  String? // Short Text
+  INN8  String? // Short Text
+  INN9  String? // Short Text
+  INN10 String? // Short Text
+  INN11 String? // Short Text
+  INN12 String? // Short Text
+  INN13 String? // Short Text
+  INN14 String? // Short Text
+  INN15 String? // Short Text
+  INN16 String? // Short Text
+  INN17 String? // Short Text
+  INN18 String? // Short Text
+  INN19 String? // Short Text
+  INN20 String? // Short Text
+  INN21 String? // Short Text
+  INN22 String? // Short Text
+  INN23 String? // Short Text
+  INN24 String? // Short Text
+  INN25 String? // Short Text
+  INN26 String? // Short Text
+  INN27 String? // Short Text
+  INN28 String? // Short Text
+  INN29 String? // Short Text
+  INN30 String? // Short Text
+  INN31 String? // Short Text
+  INN32 String? // Short Text
+  INN33 String? // Short Text
+  INN34 String? // Short Text
+  INN35 String? // Short Text
+  INN36 String? // Short Text
 
-    As_FG       Float? // Number
-    As_Date     DateTime?
-    As_Delivery DateTime?
+  As_FG       Float? // Number
+  As_Date     DateTime?
+  As_Delivery DateTime?
 
-    plan TD_Plan? @relation("SchedulePlan", fields: [Order_No, Parts_No], references: [Order_No, Parts_No])
+  plan TD_Plan? @relation("SchedulePlan", fields: [Order_No, Parts_No], references: [Order_No, Parts_No])
 
-    @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
+  @@id([Order_No, Parts_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
 }
 
 model TD_WIP {
-    Order_No       String // หมายเลขคำสั่ง
-    Parts_No       String // หมายเลขชิ้นส่วน
-    Process_No     String // หมายเลขกระบวนการ
-    OdPt_No        String? // หมายเลขการสั่งซื้อ/ชิ้นส่วน
-    OdPtPr_No      String? // หมายเลขการสั่งซื้อ/ชิ้นส่วนกระบวนการ
-    PPG            String? // PPG
-    PPC            String? // PPC
-    PMT            Float? // PMT
-    PPT            Float? // PPT
-    T_Type         String? // ประเภท T
-    P_Type         String? // ประเภท P
-    S_Type         String? // ประเภท S
-    PPD            DateTime? // PPD
-    PML            Float? // PML
-    PPL            Float? // PPL
-    INN            Float? // INN
-    RPD            Float? // RPD
-    RMT            Float? // RMT
-    RPT            Float? // RPT
-    RPN            Float? // RPN
-    ASP            Float? // ASP
-    Now_No         String? // หมายเลขปัจจุบัน
-    WIP_CAT1       Boolean? // หมวดหมู่ WIP 1
-    WIP_CAT2       Boolean? // หมวดหมู่ WIP 2
-    WIP_CAT3       Boolean? // หมวดหมู่ WIP 3
-    WIP_CAT4       Boolean? // หมวดหมู่ WIP 4
-    WIP_CAT5       Boolean? // หมวดหมู่ WIP 5
-    WIP_CAT6       Boolean? // หมวดหมู่ WIP 6
-    WIP_CAT7       Boolean? // หมวดหมู่ WIP 7
-    WIP_CAT8       Boolean? // หมวดหมู่ WIP 8
-    WIP_CAT9       Boolean? // หมวดหมู่ WIP 9
-    WIP_Month_Plan Boolean? // แผนเดือน WIP
-    WIP_Week_Plan  Boolean? // แผนสัปดาห์ WIP
-    WIP_Today_Plan Boolean? // แผนวันนี้ WIP
-    Plan_Person_CD String? // รหัสบุคคลวางแผน
-    WIP_Remark     String? // หมายเหตุ WIP
-    Into_I         Boolean? // เข้า I
+  Order_No       String // หมายเลขคำสั่ง
+  Parts_No       String // หมายเลขชิ้นส่วน
+  Process_No     String // หมายเลขกระบวนการ
+  OdPt_No        String? // หมายเลขการสั่งซื้อ/ชิ้นส่วน
+  OdPtPr_No      String? // หมายเลขการสั่งซื้อ/ชิ้นส่วนกระบวนการ
+  PPG            String? // PPG
+  PPC            String? // PPC
+  PMT            Float? // PMT
+  PPT            Float? // PPT
+  T_Type         String? // ประเภท T
+  P_Type         String? // ประเภท P
+  S_Type         String? // ประเภท S
+  PPD            DateTime? // PPD
+  PML            Float? // PML
+  PPL            Float? // PPL
+  INN            Float? // INN
+  RPD            Float? // RPD
+  RMT            Float? // RMT
+  RPT            Float? // RPT
+  RPN            Float? // RPN
+  ASP            Float? // ASP
+  Now_No         String? // หมายเลขปัจจุบัน
+  WIP_CAT1       Boolean? // หมวดหมู่ WIP 1
+  WIP_CAT2       Boolean? // หมวดหมู่ WIP 2
+  WIP_CAT3       Boolean? // หมวดหมู่ WIP 3
+  WIP_CAT4       Boolean? // หมวดหมู่ WIP 4
+  WIP_CAT5       Boolean? // หมวดหมู่ WIP 5
+  WIP_CAT6       Boolean? // หมวดหมู่ WIP 6
+  WIP_CAT7       Boolean? // หมวดหมู่ WIP 7
+  WIP_CAT8       Boolean? // หมวดหมู่ WIP 8
+  WIP_CAT9       Boolean? // หมวดหมู่ WIP 9
+  WIP_Month_Plan Boolean? // แผนเดือน WIP
+  WIP_Week_Plan  Boolean? // แผนสัปดาห์ WIP
+  WIP_Today_Plan Boolean? // แผนวันนี้ WIP
+  Plan_Person_CD String? // รหัสบุคคลวางแผน
+  WIP_Remark     String? // หมายเหตุ WIP
+  Into_I         Boolean? // เข้า I
 
-    plan TD_Plan? @relation("PlanToWIP", fields: [Order_No, Parts_No], references: [Order_No, Parts_No])
+  plan TD_Plan? @relation("PlanToWIP", fields: [Order_No, Parts_No], references: [Order_No, Parts_No])
 
-    @@id([Order_No, Parts_No, Process_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
+  @@id([Order_No, Parts_No, Process_No]) // กำหนดให้ Order_No และ Parts_No เป็นคีย์หลักร่วมกัน
 }
 
 // Lookup tables like TM_Process can remain without relations
 model TM_Process {
-    Process_CD     String  @id
-    Change_CD      String? // Change Code
-    ProcessG_CD    String // Process Group Code
-    ResourceG_CD   String // Resource Group Code
-    ManageG_CD     String? // Management Group Code
-    Manhour_Calc   String? // Manhour Calculation
-    Days_Calc      String? // Days Calculation
-    Process_Name   String? // Process Name
-    Process_Abb    String? // Process Abbreviation
-    Process_Symbol String? // Process Symbol
-    Process_Mark   String? // Process Mark
-    Use            String? // Use
-    For_Plan       String? // For Plan
-    For_Info       String? // For Information
-    Graph          String? // Graph
-    List           String? // List
-    Outside_On     String? // Outside On
-    Outside_Off    String? // Outside Off
-    End            String? // End
-    Coefficient    String? // Coefficient
-    M_Coefficient  String? // M Coefficient
-    P_Coefficient  String? // P Coefficient
-    Before         String? // Before
+  Process_CD     String  @id
+  Change_CD      String? // Change Code
+  ProcessG_CD    String // Process Group Code
+  ResourceG_CD   String // Resource Group Code
+  ManageG_CD     String? // Management Group Code
+  Manhour_Calc   String? // Manhour Calculation
+  Days_Calc      String? // Days Calculation
+  Process_Name   String? // Process Name
+  Process_Abb    String? // Process Abbreviation
+  Process_Symbol String? // Process Symbol
+  Process_Mark   String? // Process Mark
+  Use            String? // Use
+  For_Plan       String? // For Plan
+  For_Info       String? // For Information
+  Graph          String? // Graph
+  List           String? // List
+  Outside_On     String? // Outside On
+  Outside_Off    String? // Outside Off
+  End            String? // End
+  Coefficient    String? // Coefficient
+  M_Coefficient  String? // M Coefficient
+  P_Coefficient  String? // P Coefficient
+  Before         String? // Before
 
-    // ฟิลด์ใหม่ที่เพิ่มเข้ามา
-    After          Float? // After
-    Operation_Time Float? // Operation Time
-    Std_M_CAT      Float? // Standard M Category
-    Std_M_Time     Float? // Standard M Time
-    Std_P_CAT      Float? // Standard P Category
-    Std_P_Time     Float? // Standard P Time
-    T_Type         String? // Type T
-    P_Type         String? // Type P
-    S_Type         String? // Type S
-    Process_Remark String? // Remark for Process
+  // ฟิลด์ใหม่ที่เพิ่มเข้ามา
+  After          Float? // After
+  Operation_Time Float? // Operation Time
+  Std_M_CAT      Float? // Standard M Category
+  Std_M_Time     Float? // Standard M Time
+  Std_P_CAT      Float? // Standard P Category
+  Std_P_Time     Float? // Standard P Time
+  T_Type         String? // Type T
+  P_Type         String? // Type P
+  S_Type         String? // Type S
+  Process_Remark String? // Remark for Process
 
-    Resource      TM_Resource   @relation(fields: [Process_CD], references: [Resource_CD])
-    processGroup  TM_ProcessG   @relation(fields: [ProcessG_CD], references: [ProcessG_CD])
-    // ความสัมพันธ์กับ TM_ResourceG
-    resourceGroup TM_ResourceG  @relation("ResourceGroupProcesses", fields: [ResourceG_CD], references: [ResourceG_CD])
-    TM_ProcessG   TM_ProcessG[] @relation("ProcessGroupProcesses")
+  Resource      TM_Resource   @relation(fields: [Process_CD], references: [Resource_CD])
+  processGroup  TM_ProcessG   @relation(fields: [ProcessG_CD], references: [ProcessG_CD])
+  // ความสัมพันธ์กับ TM_ResourceG
+  resourceGroup TM_ResourceG  @relation("ResourceGroupProcesses", fields: [ResourceG_CD], references: [ResourceG_CD])
+  TM_ProcessG   TM_ProcessG[] @relation("ProcessGroupProcesses")
 }
 
 model TM_ProcessG {
-    ProcessG_CD     String  @id
-    Change_CD       String? // Change Code
-    ManageG_CD      String? // Management Group Code
-    ProcessG_Name   String? // Process Group Name
-    ProcessG_Abb    String? // Process Group Abbreviation
-    ProcessG_Symbol String? // Process Group Symbol
-    ProcessG_Mark   String? // Process Group Mark
-    Use             String? // Use
-    Use_Object      String? // Use Object
-    Graph           String? // Graph
-    List            String? // List
-    Coefficient     String? // Coefficient
-    M_Coefficient   String? // M Coefficient
-    P_Coefficient   String? // P Coefficient
-    Std_M_CAT       String? // Standard M Category
+  ProcessG_CD     String  @id
+  Change_CD       String? // Change Code
+  ManageG_CD      String? // Management Group Code
+  ProcessG_Name   String? // Process Group Name
+  ProcessG_Abb    String? // Process Group Abbreviation
+  ProcessG_Symbol String? // Process Group Symbol
+  ProcessG_Mark   String? // Process Group Mark
+  Use             String? // Use
+  Use_Object      String? // Use Object
+  Graph           String? // Graph
+  List            String? // List
+  Coefficient     String? // Coefficient
+  M_Coefficient   String? // M Coefficient
+  P_Coefficient   String? // P Coefficient
+  Std_M_CAT       String? // Standard M Category
 
-    // ฟิลด์ใหม่ที่เพิ่มเข้ามา
-    Std_M_Time      Float? // Standard M Time
-    Std_P_CAT       Float? // Standard P Category
-    Std_P_Time      Float? // Standard P Time
-    M_Resource_N    Float? // M Resource Number
-    S_Resource_N    Float? // S Resource Number
-    ProcessG_Remark String? // Remark for Process Group
+  // ฟิลด์ใหม่ที่เพิ่มเข้ามา
+  Std_M_Time      Float? // Standard M Time
+  Std_P_CAT       Float? // Standard P Category
+  Std_P_Time      Float? // Standard P Time
+  M_Resource_N    Float? // M Resource Number
+  S_Resource_N    Float? // S Resource Number
+  ProcessG_Remark String? // Remark for Process Group
 
-    processes TM_Process[] @relation("ProcessGroupProcesses")
+  processes TM_Process[] @relation("ProcessGroupProcesses")
 
-    TM_Process TM_Process[]
+  TM_Process TM_Process[]
 }
 
 model TM_ResourceG {
-    ResourceG_CD     String  @id
-    Change_CD        String? // Change Code
-    ResourceG_Name   String? // Resource Group Name
-    ResourceG_Abb    String? // Resource Group Abbreviation
-    ResourceG_Symbol String? // Resource Group Symbol
-    ResourceG_Mark   String? // Resource Group Mark
-    Us_Group_Mark    String? // Us Group Mark
-    Use              String? // Use
+  ResourceG_CD     String  @id
+  Change_CD        String? // Change Code
+  ResourceG_Name   String? // Resource Group Name
+  ResourceG_Abb    String? // Resource Group Abbreviation
+  ResourceG_Symbol String? // Resource Group Symbol
+  ResourceG_Mark   String? // Resource Group Mark
+  Us_Group_Mark    String? // Us Group Mark
+  Use              String? // Use
 
-    // ฟิลด์ใหม่ที่เพิ่มเข้ามา
-    Coefficient       Float? // Coefficient
-    M_Coefficient     Float? // M Coefficient
-    P_Coefficient     Float? // P Coefficient
-    M_Resource_Object String? // M Resource Object
-    S_Resource_Object String? // S Resource Object
-    ResourceG_Remark  String? // Remark for Resource Group
-    // ความสัมพันธ์ one-to-many กับ TM_Process
-    processes         TM_Process[] @relation("ResourceGroupProcesses")
+  // ฟิลด์ใหม่ที่เพิ่มเข้ามา
+  Coefficient       Float? // Coefficient
+  M_Coefficient     Float? // M Coefficient
+  P_Coefficient     Float? // P Coefficient
+  M_Resource_Object String? // M Resource Object
+  S_Resource_Object String? // S Resource Object
+  ResourceG_Remark  String? // Remark for Resource Group
+  // ความสัมพันธ์ one-to-many กับ TM_Process
+  processes         TM_Process[] @relation("ResourceGroupProcesses")
 }
 
 model TM_Resource {
-    Resource_CD     String  @id
-    Change_CD       String? // Change Code
-    ResourceG_CD    String? // Resource Group Code
-    CostG_CD        String? // Cost Group Code
-    ManageG_CD      String? // Manage Group Code
-    Resource_Name   String? // Resource Name
-    Resource_Abb    String? // Resource Abbreviation
-    Resource_Symbol String? // Resource Symbol
-    Resource_Mark   String? // Resource Mark
-    Use             String? // Use
-    End             String? // End
-    M_Coefficient   String? // M Coefficient
+  Resource_CD     String  @id
+  Change_CD       String? // Change Code
+  ResourceG_CD    String? // Resource Group Code
+  CostG_CD        String? // Cost Group Code
+  ManageG_CD      String? // Manage Group Code
+  Resource_Name   String? // Resource Name
+  Resource_Abb    String? // Resource Abbreviation
+  Resource_Symbol String? // Resource Symbol
+  Resource_Mark   String? // Resource Mark
+  Use             String? // Use
+  End             String? // End
+  M_Coefficient   String? // M Coefficient
 
-    // ฟิลด์ใหม่ที่เพิ่มเข้ามา
-    P_Coefficient   Float? // P Coefficient
-    Before          Float? // Before
-    After           Float? // After
-    T_Type          String? // T Type
-    P_Type          String? // P Type
-    Resource_Remark String? // Resource Remark
+  // ฟิลด์ใหม่ที่เพิ่มเข้ามา
+  P_Coefficient   Float? // P Coefficient
+  Before          Float? // Before
+  After           Float? // After
+  T_Type          String? // T Type
+  P_Type          String? // P Type
+  Resource_Remark String? // Resource Remark
 
-    TM_Process TM_Process[] // ความสัมพันธ์กับ TM_Process
+  TM_Process TM_Process[] // ความสัมพันธ์กับ TM_Process
 }
 
 model TM_CostG {
-    CostG_CD      String  @id
-    Change_CD     String?
-    CostG_Name    String?
-    CostG_Abb     String?
-    CostG_Symbol  String?
-    CostG_Mark    String?
-    Use           String?
-    Coefficient   String?
-    M_Coefficient String?
-    P_Coefficient Float?
-    CostG_Remark  String?
+  CostG_CD      String  @id
+  Change_CD     String?
+  CostG_Name    String?
+  CostG_Abb     String?
+  CostG_Symbol  String?
+  CostG_Mark    String?
+  Use           String?
+  Coefficient   String?
+  M_Coefficient String?
+  P_Coefficient Float?
+  CostG_Remark  String?
 }
 
 model TM_WorkG {
-    WorkG_CD     String  @id
-    WorkG_Name   String?
-    WorkG_Abb    String?
-    WorkG_Symbol String?
-    WorkG_Mark   String?
+  WorkG_CD     String  @id
+  WorkG_Name   String?
+  WorkG_Abb    String?
+  WorkG_Symbol String?
+  WorkG_Mark   String?
 
-    // One-to-Many relationship with TM_Worker
-    workers TM_Worker[] @relation("WorkGroupWorkers")
+  // One-to-Many relationship with TM_Worker
+  workers TM_Worker[] @relation("WorkGroupWorkers")
 
-    TM_Worker TM_Worker[]
+  TM_Worker TM_Worker[]
 }
 
 model TM_Worker {
-    Worker_CD     String  @id // รหัสคนงาน
-    Worker_Pass   String? // รหัสผ่านคนงาน
-    WorkerG_CD    String? // รหัสกลุ่มคนงาน
-    WorkG_CD      String // รหัสการทำงาน
-    Worker_Name   String? // ชื่อคนงาน
-    Worker_Abb    String? // ชื่อย่อคนงาน
-    Worker_JPN    String? // ชื่อภาษาญี่ปุ่นของคนงาน
-    Access_Lv     Int? // ระดับการเข้าถึง (เปลี่ยนจาก Number เป็น Int)
-    Worker_Level  String? // ระดับคนงาน
-    Worker_Menu   String? // เมนูคนงาน
-    Worker_Remark String? // หมายเหตุคนงาน
+  Worker_CD     String  @id // รหัสคนงาน
+  Worker_Pass   String? // รหัสผ่านคนงาน
+  WorkerG_CD    String? // รหัสกลุ่มคนงาน
+  WorkG_CD      String // รหัสการทำงาน
+  Worker_Name   String? // ชื่อคนงาน
+  Worker_Abb    String? // ชื่อย่อคนงาน
+  Worker_JPN    String? // ชื่อภาษาญี่ปุ่นของคนงาน
+  Access_Lv     Int? // ระดับการเข้าถึง (เปลี่ยนจาก Number เป็น Int)
+  Worker_Level  String? // ระดับคนงาน
+  Worker_Menu   String? // เมนูคนงาน
+  Worker_Remark String? // หมายเหตุคนงาน
 
-    // Many-to-One relationship with TM_WorkG
-    workGroup TM_WorkG @relation(fields: [WorkG_CD], references: [WorkG_CD])
+  // Many-to-One relationship with TM_WorkG
+  workGroup TM_WorkG @relation(fields: [WorkG_CD], references: [WorkG_CD])
 
-    // One-to-Many relationship with TM_WorkerG
-    workerGroups TM_WorkerG[] @relation("WorkerWorkerGroups")
+  // One-to-Many relationship with TM_WorkerG
+  workerGroups TM_WorkerG[] @relation("WorkerWorkerGroups")
 
-    TM_WorkG TM_WorkG[] @relation("WorkGroupWorkers")
+  TM_WorkG TM_WorkG[] @relation("WorkGroupWorkers")
 }
 
 model TM_WorkerG {
-    WorkerG_CD     String   @id
-    WorkerG_Name   String?
-    WorkerG_Abb    String?
-    WorkG_Symbol   String?
-    WorkG_Mark     String?
-    Pl_Object_Grp  String?
-    Pl_Object      Boolean?
-    Target_Amount  Float?
-    WorkerG_Remark String?
+  WorkerG_CD     String   @id
+  WorkerG_Name   String?
+  WorkerG_Abb    String?
+  WorkG_Symbol   String?
+  WorkG_Mark     String?
+  Pl_Object_Grp  String?
+  Pl_Object      Boolean?
+  Target_Amount  Float?
+  WorkerG_Remark String?
 
-    // Many-to-One relationship with TM_Worker
-    workers TM_Worker[] @relation("WorkerWorkerGroups")
+  // Many-to-One relationship with TM_Worker
+  workers TM_Worker[] @relation("WorkerWorkerGroups")
 }
 
 model TM_Customer {
-    Customer_CD      String @id  // รหัสลูกค้า
-    Customer_Name    String? // ชื่อลูกค้า
-    Customer_Name2   String? // ชื่อลูกค้า (สำรอง)
-    Customer_Abb     String? // ตัวย่อของลูกค้า
-    Customer_Add     String? // ที่อยู่ลูกค้า
-    Customer_Add2    String? // ที่อยู่ลูกค้า (สำรอง)
-    Customer_Add3    String? // ที่อยู่ลูกค้า (สำรอง)
-    Customer_Contact String? // ติดต่อ
-    Customer_TEL     String? // โทรศัพท์ลูกค้า
-    Posting_Group    String? // กลุ่มโพสต์
-    Payment_CD       String? // รหัสการชำระเงิน
-    Sl_Person_CD     String? // รหัสบุคคลที่เกี่ยวข้อง
-    Blocked          Boolean // สถานะบล็อก
-    Customer_FAX     String? // โทรสารลูกค้า
-    Branch_No        String? // หมายเลขสาขา
-    Nationality      String? // สัญชาติ
-    Customer_Group   String? // กลุ่มลูกค้า
-    VAT_Reg_No       String? // หมายเลขการลงทะเบียน VAT
-    Customer_Remark  String? // หมายเหตุของลูกค้า
+  Customer_CD      String  @id // รหัสลูกค้า
+  Customer_Name    String? // ชื่อลูกค้า
+  Customer_Name2   String? // ชื่อลูกค้า (สำรอง)
+  Customer_Abb     String? // ตัวย่อของลูกค้า
+  Customer_Add     String? // ที่อยู่ลูกค้า
+  Customer_Add2    String? // ที่อยู่ลูกค้า (สำรอง)
+  Customer_Add3    String? // ที่อยู่ลูกค้า (สำรอง)
+  Customer_Contact String? // ติดต่อ
+  Customer_TEL     String? // โทรศัพท์ลูกค้า
+  Posting_Group    String? // กลุ่มโพสต์
+  Payment_CD       String? // รหัสการชำระเงิน
+  Sl_Person_CD     String? // รหัสบุคคลที่เกี่ยวข้อง
+  Blocked          Boolean // สถานะบล็อก
+  Customer_FAX     String? // โทรสารลูกค้า
+  Branch_No        String? // หมายเลขสาขา
+  Nationality      String? // สัญชาติ
+  Customer_Group   String? // กลุ่มลูกค้า
+  VAT_Reg_No       String? // หมายเลขการลงทะเบียน VAT
+  Customer_Remark  String? // หมายเหตุของลูกค้า
 }
 
 model TS_Set {
-    ID                Int       @id @default(autoincrement())
-    Use               Boolean?
-    Version           String?   @db.Text
-    Field_Name        String?   @db.Text
-    Data_Type         String?   @db.Text
-    AutoNumber        Boolean?
-    Password          String?   @db.Text
-    Language          String?   @db.Text
-    Od_No_Digits      Int?
-    SV_Name           String?   @db.Text
-    TENKEI            String?   @db.Text
-    Sales_Docu        String?   @db.Text
-    Sales_Docu_Type   String?   @db.Text
-    Product_Docu      String?   @db.Text
-    Product_Docu_Type String?   @db.Text
-    Procure_Docu      String?   @db.Text
-    Procure_Docu_Type String?   @db.Text
-    Outside_Docu      String?   @db.Text
-    Outside_Docu_Type String?   @db.Text
-    Inspect_Docu      String?   @db.Text
-    Inspect_Docu_Type String?   @db.Text
-    Send_Docu         String?   @db.Text
-    Send_Docu_Type    String?   @db.Text
-    Supple_Docu       String?   @db.Text
-    Supple_Docu_Type  String?   @db.Text
-    SOrder_CSV        String?   @db.Text
-    SOrder_CSV_BK     String?   @db.Text
-    SOrder_CSV_CP     String?   @db.Text
-    Order_CSV         String?   @db.Text
-    Order_CSV_BK      String?   @db.Text
-    Order_CSV_CP      String?   @db.Text
-    Procure_CSV       String?   @db.Text
-    Procure_CSV_BK    String?   @db.Text
-    Procure_CSV_CP    String?   @db.Text
-    Cost_CSV          String?   @db.Text
-    WIP_CSV           String?   @db.Text
-    WIP_CSV_Writing   String?   @db.Text
-    Cost_Save         String?   @db.Text
-    Cost_Save_Time    DateTime?
-    Cost_Write        String?   @db.Text
-    Cost_Write_Time   DateTime?
-    Delivery_CSV      String?   @db.Text
-    Label_CSV         String?   @db.Text
-    Label_CSV_FG      Boolean?
-    ASPROVA           String?   @db.Text
-    As_Operation_Csv  String?   @db.Text
-    As_Resource_Csv   String?   @db.Text
-    As_Plan_Csv       String?   @db.Text
-    As_Use_Csv        String?   @db.Text
+  ID                Int       @id @default(autoincrement())
+  Use               Boolean?
+  Version           String?   @db.Text
+  Field_Name        String?   @db.Text
+  Data_Type         String?   @db.Text
+  AutoNumber        Boolean?
+  Password          String?   @db.Text
+  Language          String?   @db.Text
+  Od_No_Digits      Int?
+  SV_Name           String?   @db.Text
+  TENKEI            String?   @db.Text
+  Sales_Docu        String?   @db.Text
+  Sales_Docu_Type   String?   @db.Text
+  Product_Docu      String?   @db.Text
+  Product_Docu_Type String?   @db.Text
+  Procure_Docu      String?   @db.Text
+  Procure_Docu_Type String?   @db.Text
+  Outside_Docu      String?   @db.Text
+  Outside_Docu_Type String?   @db.Text
+  Inspect_Docu      String?   @db.Text
+  Inspect_Docu_Type String?   @db.Text
+  Send_Docu         String?   @db.Text
+  Send_Docu_Type    String?   @db.Text
+  Supple_Docu       String?   @db.Text
+  Supple_Docu_Type  String?   @db.Text
+  SOrder_CSV        String?   @db.Text
+  SOrder_CSV_BK     String?   @db.Text
+  SOrder_CSV_CP     String?   @db.Text
+  Order_CSV         String?   @db.Text
+  Order_CSV_BK      String?   @db.Text
+  Order_CSV_CP      String?   @db.Text
+  Procure_CSV       String?   @db.Text
+  Procure_CSV_BK    String?   @db.Text
+  Procure_CSV_CP    String?   @db.Text
+  Cost_CSV          String?   @db.Text
+  WIP_CSV           String?   @db.Text
+  WIP_CSV_Writing   String?   @db.Text
+  Cost_Save         String?   @db.Text
+  Cost_Save_Time    DateTime?
+  Cost_Write        String?   @db.Text
+  Cost_Write_Time   DateTime?
+  Delivery_CSV      String?   @db.Text
+  Label_CSV         String?   @db.Text
+  Label_CSV_FG      Boolean?
+  ASPROVA           String?   @db.Text
+  As_Operation_Csv  String?   @db.Text
+  As_Resource_Csv   String?   @db.Text
+  As_Plan_Csv       String?   @db.Text
+  As_Use_Csv        String?   @db.Text
 
-    // เพิ่มฟิลด์ใหม่
-    As_Input_Csv      String?   @db.Text
-    As_Schedule_Csv   String?   @db.Text
-    Us_Group_CD       String?   @db.Text
-    Us_Group_Name     String?   @db.Text
-    Us_Group_Abb      String?   @db.Text
-    Us_Group_Symbol   String?   @db.Text
-    Us_Group_Mark     String?   @db.Text
-    Us_Group_TEL      String?   @db.Text
-    Us_Group_FAX      String?   @db.Text
-    Us_Office_CD      String?   @db.Text
-    Us_Office_Name    String?   @db.Text
-    Us_Office_Abb     String?   @db.Text
-    Us_Office_Symbol  String?   @db.Text
-    Us_Office_Mark    String?   @db.Text
-    St_Target_Week1   DateTime?
-    Ed_Target_Week1   DateTime?
-    St_Target_Week2   DateTime?
-    Ed_Target_Week2   DateTime?
-    Ed_Target_Week3   DateTime?
-    St_Target_Week4   DateTime?
-    Ed_Target_Week4   DateTime?
-    St_Target_Week5   DateTime?
-    Ed_Target_Week5   DateTime?
-    Od_DrawNo_Reflect Boolean?
-    PI_Quote_Delivery String?   @db.Text
-    Pl_Abst_St_Days   Int?
-    Pl_Abst_Ed_Days   Int?
-    Sc_Make_Type      String?   @db.Text
-    Sc_Stagnat_Time   Int?
-    Sc_Stagnat_Scale  Int?
-    Sc_Person_Scale   Int?
-    Sc_Machine_Scale  Int?
-    Sc_Outside_Scale  Int?
-    Sc_ManHour_Scale  Int?
-    Ps_Delivery1      String?   @db.Text
-    Ps_Delivery2      String?   @db.Text
-    Ps_Delivery3      String?   @db.Text
-    Ps_Delivery4      String?   @db.Text
-    Ps_Draw_No_View   Boolean?
-    Ps_Entry_Text1    String?   @db.Text
-    Ps_Entry_Text2    String?   @db.Text
-    Ps_Entry_Text3    String?   @db.Text
-    Ps_Under_Text     String?   @db.Text
-    Rs_BarCode_Input  Boolean?
+  // เพิ่มฟิลด์ใหม่
+  As_Input_Csv      String?   @db.Text
+  As_Schedule_Csv   String?   @db.Text
+  Us_Group_CD       String?   @db.Text
+  Us_Group_Name     String?   @db.Text
+  Us_Group_Abb      String?   @db.Text
+  Us_Group_Symbol   String?   @db.Text
+  Us_Group_Mark     String?   @db.Text
+  Us_Group_TEL      String?   @db.Text
+  Us_Group_FAX      String?   @db.Text
+  Us_Office_CD      String?   @db.Text
+  Us_Office_Name    String?   @db.Text
+  Us_Office_Abb     String?   @db.Text
+  Us_Office_Symbol  String?   @db.Text
+  Us_Office_Mark    String?   @db.Text
+  St_Target_Week1   DateTime?
+  Ed_Target_Week1   DateTime?
+  St_Target_Week2   DateTime?
+  Ed_Target_Week2   DateTime?
+  Ed_Target_Week3   DateTime?
+  St_Target_Week4   DateTime?
+  Ed_Target_Week4   DateTime?
+  St_Target_Week5   DateTime?
+  Ed_Target_Week5   DateTime?
+  Od_DrawNo_Reflect Boolean?
+  PI_Quote_Delivery String?   @db.Text
+  Pl_Abst_St_Days   Int?
+  Pl_Abst_Ed_Days   Int?
+  Sc_Make_Type      String?   @db.Text
+  Sc_Stagnat_Time   Int?
+  Sc_Stagnat_Scale  Int?
+  Sc_Person_Scale   Int?
+  Sc_Machine_Scale  Int?
+  Sc_Outside_Scale  Int?
+  Sc_ManHour_Scale  Int?
+  Ps_Delivery1      String?   @db.Text
+  Ps_Delivery2      String?   @db.Text
+  Ps_Delivery3      String?   @db.Text
+  Ps_Delivery4      String?   @db.Text
+  Ps_Draw_No_View   Boolean?
+  Ps_Entry_Text1    String?   @db.Text
+  Ps_Entry_Text2    String?   @db.Text
+  Ps_Entry_Text3    String?   @db.Text
+  Ps_Under_Text     String?   @db.Text
+  Rs_BarCode_Input  Boolean?
 
-    // ฟิลด์เพิ่มเติมใหม่
-    Rs_Move_Range     String?   @db.Text
-    Rs_Time_Input     Boolean?
-    Rs_Auto_Finish    Boolean?
-    Od_List_ViewW     Int?
-    Pc_List_ViewW     Int?
-    Pc_List_ViewH     Int?
-    Pl_List_ViewW     Int?
-    Pl_List_ViewH     Int?
-    Rs_List_ViewH     Int?
-    Od_Search_ViewW   Int?
-    Od_Search_ViewH   Int?
-    Pl_Search_ViewW   Int?
-    Pl_Search_ViewH   Int?
-    PI_Change_Page    String?   @db.Text
-    PI_Schedule       String?   @db.Text
-    Pl_Color_Separate Boolean?
-    PI_Delivery1      String?   @db.Text
-    Pl_Delivery2      String?   @db.Text
-    Pl_Delivery3      String?   @db.Text
-    Job_Find_St_Days  Int?
-    Job_Find_Ed_Days  Int?
-    Settles           Boolean?
-    Settles_Day       DateTime?
-    Pd_Revision_Days  Int?
-    Od_Sach_S_Years   Int?
-    PI_Sach_S_Years   Int?
-    LINK_Name1        String?   @db.Text
-    LINK1             String?   @db.Text
-    LINK_Name2        String?   @db.Text
-    LINK2             String?   @db.Text
-    LINK_Name3        String?   @db.Text
-    LINK3             String?   @db.Text
-    LINK_Name4        String?   @db.Text
-    LINK4             String?   @db.Text
-    LINK_Name5        String?   @db.Text
-    LINK5             String?   @db.Text
-    LINK_Name6        String?   @db.Text
-    LINK6             String?   @db.Text
-    LINK_Name7        String?   @db.Text
-    LINK7             String?   @db.Text
-    LINK_Name8        String?   @db.Text
-    LINK8             String?   @db.Text
-    LINK_Name9        String?   @db.Text
-    LINK9             String?   @db.Text
-    LINK_Name10       String?   @db.Text
-    LINK10            String?   @db.Text
+  // ฟิลด์เพิ่มเติมใหม่
+  Rs_Move_Range     String?   @db.Text
+  Rs_Time_Input     Boolean?
+  Rs_Auto_Finish    Boolean?
+  Od_List_ViewW     Int?
+  Pc_List_ViewW     Int?
+  Pc_List_ViewH     Int?
+  Pl_List_ViewW     Int?
+  Pl_List_ViewH     Int?
+  Rs_List_ViewH     Int?
+  Od_Search_ViewW   Int?
+  Od_Search_ViewH   Int?
+  Pl_Search_ViewW   Int?
+  Pl_Search_ViewH   Int?
+  PI_Change_Page    String?   @db.Text
+  PI_Schedule       String?   @db.Text
+  Pl_Color_Separate Boolean?
+  PI_Delivery1      String?   @db.Text
+  Pl_Delivery2      String?   @db.Text
+  Pl_Delivery3      String?   @db.Text
+  Job_Find_St_Days  Int?
+  Job_Find_Ed_Days  Int?
+  Settles           Boolean?
+  Settles_Day       DateTime?
+  Pd_Revision_Days  Int?
+  Od_Sach_S_Years   Int?
+  PI_Sach_S_Years   Int?
+  LINK_Name1        String?   @db.Text
+  LINK1             String?   @db.Text
+  LINK_Name2        String?   @db.Text
+  LINK2             String?   @db.Text
+  LINK_Name3        String?   @db.Text
+  LINK3             String?   @db.Text
+  LINK_Name4        String?   @db.Text
+  LINK4             String?   @db.Text
+  LINK_Name5        String?   @db.Text
+  LINK5             String?   @db.Text
+  LINK_Name6        String?   @db.Text
+  LINK6             String?   @db.Text
+  LINK_Name7        String?   @db.Text
+  LINK7             String?   @db.Text
+  LINK_Name8        String?   @db.Text
+  LINK8             String?   @db.Text
+  LINK_Name9        String?   @db.Text
+  LINK9             String?   @db.Text
+  LINK_Name10       String?   @db.Text
+  LINK10            String?   @db.Text
 }
 
 model tm_request1 {
   Request1_CD     String  @id @db.VarChar(2)
-  Request1_Name   String?  @db.VarChar(20)
-  Request1_Abb    String?  @db.VarChar(10)
-  Request1_Symbol String?  @db.VarChar(10)
-  Request1_Remark String?  @db.VarChar(20)
+  Request1_Name   String? @db.VarChar(20)
+  Request1_Abb    String? @db.VarChar(10)
+  Request1_Symbol String? @db.VarChar(10)
+  Request1_Remark String? @db.VarChar(20)
 }
 
 model tm_request2 {
   Request2_CD     String  @id @db.VarChar(2)
-  Request2_Name   String?  @db.VarChar(20)
-  Request2_Abb    String?  @db.VarChar(10)
-  Request2_Symbol String?  @db.VarChar(10)
-  Request2_Remark String?  @db.VarChar(20)
+  Request2_Name   String? @db.VarChar(20)
+  Request2_Abb    String? @db.VarChar(10)
+  Request2_Symbol String? @db.VarChar(10)
+  Request2_Remark String? @db.VarChar(20)
 }
 
 model tm_request3 {
   Request3_CD     String  @id @db.VarChar(2)
-  Request3_Name   String?  @db.VarChar(20)
-  Request3_Abb    String?  @db.VarChar(10)
-  Request3_Symbol String?  @db.VarChar(10)
-  Request3_Remark String?  @db.VarChar(20)
+  Request3_Name   String? @db.VarChar(20)
+  Request3_Abb    String? @db.VarChar(10)
+  Request3_Symbol String? @db.VarChar(10)
+  Request3_Remark String? @db.VarChar(20)
 }
 
 model tm_target {
-  Target_CD       String @id @db.VarChar(2)
-  Target_Name     String? @db.VarChar(10)
-  Target_Abb      String? @db.VarChar(5)
-  Target_Symbol   String? @db.VarChar(5)
-  Target_Mark     String? @db.VarChar(5)
-  Target_Price    Float?
-  Target_Remark   String? @db.VarChar(50)
+  Target_CD     String  @id @db.VarChar(2)
+  Target_Name   String? @db.VarChar(10)
+  Target_Abb    String? @db.VarChar(5)
+  Target_Symbol String? @db.VarChar(5)
+  Target_Mark   String? @db.VarChar(5)
+  Target_Price  Float?
+  Target_Remark String? @db.VarChar(50)
 }
 
 model tm_unit {
-  Unit_CD      String @id @db.VarChar(2)
-  Unit_Name    String? @db.VarChar(50)
-  Unit_Abb     String? @db.VarChar(50)
-  Unit_Remark  String? @db.VarChar(50)
+  Unit_CD     String  @id @db.VarChar(2)
+  Unit_Name   String? @db.VarChar(50)
+  Unit_Abb    String? @db.VarChar(50)
+  Unit_Remark String? @db.VarChar(50)
 }
+
 model tm_supply {
-  Supply_CD       String @id @db.VarChar(2)
-  Supply_Name     String? @db.VarChar(20)
-  Supply_Abb      String? @db.VarChar(15)
-  Supply_Symbol   String? @db.VarChar(10)
-  Supply_Mark     String? @db.VarChar(10)
-  Supply_Remark   String? @db.VarChar(20)
+  Supply_CD     String  @id @db.VarChar(2)
+  Supply_Name   String? @db.VarChar(20)
+  Supply_Abb    String? @db.VarChar(15)
+  Supply_Symbol String? @db.VarChar(10)
+  Supply_Mark   String? @db.VarChar(10)
+  Supply_Remark String? @db.VarChar(20)
 }
+
 model tm_item1 {
-  Item1_CD        String  @id @db.VarChar(20)
-  Item1_Name      String?  @db.VarChar(50)
-  Item1_Name2     String?  @db.VarChar(50)
-  Item1_Abb       String?  @db.VarChar(50)
-  Item1_Unit      String?  @db.VarChar(10)
-  Posting_Group   String?  @db.VarChar(10)
-  Unit_Price      Decimal? @db.Decimal(28, 20)
-  Unit_Cost       Decimal? @db.Decimal(28, 20)
-  Gross_Weight    Decimal? @db.Decimal(28, 20)
-  Net_Weight      Decimal? @db.Decimal(28, 20)
-  Blocked         Boolean? @db.Bit(1)
-  Item1_Type      String?  @db.VarChar(20)
-  Item1_Grp       String?  @db.VarChar(50)
-  Item1_Remark    String?  @db.VarChar(50)
+  Item1_CD      String   @id @db.VarChar(20)
+  Item1_Name    String?  @db.VarChar(50)
+  Item1_Name2   String?  @db.VarChar(50)
+  Item1_Abb     String?  @db.VarChar(50)
+  Item1_Unit    String?  @db.VarChar(10)
+  Posting_Group String?  @db.VarChar(10)
+  Unit_Price    Decimal? @db.Decimal(28, 20)
+  Unit_Cost     Decimal? @db.Decimal(28, 20)
+  Gross_Weight  Decimal? @db.Decimal(28, 20)
+  Net_Weight    Decimal? @db.Decimal(28, 20)
+  Blocked       Boolean? @db.Bit(1)
+  Item1_Type    String?  @db.VarChar(20)
+  Item1_Grp     String?  @db.VarChar(50)
+  Item1_Remark  String?  @db.VarChar(50)
 }
+
 model tm_coating {
-  Coating_CD       String @id @db.VarChar(2)
-  Coating_Name     String? @db.VarChar(10)
-  Coating_Abb      String? @db.VarChar(5)
-  Coating_Symbol   String? @db.VarChar(3)
-  Coating_Remark   String? @db.VarChar(20)
+  Coating_CD     String  @id @db.VarChar(2)
+  Coating_Name   String? @db.VarChar(10)
+  Coating_Abb    String? @db.VarChar(5)
+  Coating_Symbol String? @db.VarChar(3)
+  Coating_Remark String? @db.VarChar(20)
 }
 
 model tm_price {
-  Price_CD      String @id @db.VarChar(2)
-  Price_Name    String? @db.VarChar(15)
-  Price_Abb     String? @db.VarChar(10)
-  Price_Symbol  String? @db.VarChar(5)
-  Price_Remark  String? @db.VarChar(20)
+  Price_CD     String  @id @db.VarChar(2)
+  Price_Name   String? @db.VarChar(15)
+  Price_Abb    String? @db.VarChar(10)
+  Price_Symbol String? @db.VarChar(5)
+  Price_Remark String? @db.VarChar(20)
 }
 
 model tm_contract_docu {
-  Contract_Docu_CD      String @id @db.VarChar(6)
-  Contract_Docu_Name    String? @db.VarChar(10)
-  Contract_Docu_Abb     String? @db.VarChar(10)
-  Contract_Docu_Remark  String? @db.VarChar(20)
+  Contract_Docu_CD     String  @id @db.VarChar(6)
+  Contract_Docu_Name   String? @db.VarChar(10)
+  Contract_Docu_Abb    String? @db.VarChar(10)
+  Contract_Docu_Remark String? @db.VarChar(20)
 }
 
 model tm_od_quote {
-  Od_Quote_CD      String @id @db.VarChar(2)
-  Od_Quote_Name    String? @db.VarChar(15)
-  Od_Quote_Abb     String? @db.VarChar(10)
-  Od_Quote_Symbol  String? @db.VarChar(5)
-  Od_Quote_Remark  String? @db.VarChar(50)
+  Od_Quote_CD     String  @id @db.VarChar(2)
+  Od_Quote_Name   String? @db.VarChar(15)
+  Od_Quote_Abb    String? @db.VarChar(10)
+  Od_Quote_Symbol String? @db.VarChar(5)
+  Od_Quote_Remark String? @db.VarChar(50)
 }
 
 model tm_od_progress {
-  Od_Progress_CD      String @id @db.VarChar(2)
-  Od_Progress_Name    String? @db.VarChar(20)
-  Od_Progress_Abb     String? @db.VarChar(10)
-  Od_Progress_Symbol  String? @db.VarChar(5)
-  Od_Progress_Mark    String? @db.VarChar(5)
-  Od_Progress_Remark  String? @db.VarChar(50)
+  Od_Progress_CD     String  @id @db.VarChar(2)
+  Od_Progress_Name   String? @db.VarChar(20)
+  Od_Progress_Abb    String? @db.VarChar(10)
+  Od_Progress_Symbol String? @db.VarChar(5)
+  Od_Progress_Mark   String? @db.VarChar(5)
+  Od_Progress_Remark String? @db.VarChar(50)
 }
 
 model tm_delivery {
-  Delivery_CD       String  @id @db.VarChar(2)
-  Delivery_Name     String? @db.VarChar(30)
-  Delivery_Abb      String? @db.VarChar(25)
-  Delivery_Symbol   String? @db.VarChar(20)
-  Delivery_Mark     String? @db.VarChar(15)
-  Coefficient       Float?
-  For_Order         Boolean? @db.Bit(1)
-  For_Procure       Boolean? @db.Bit(1)
-  Delivery_Remark   String? @db.VarChar(50)
+  Delivery_CD     String   @id @db.VarChar(2)
+  Delivery_Name   String?  @db.VarChar(30)
+  Delivery_Abb    String?  @db.VarChar(25)
+  Delivery_Symbol String?  @db.VarChar(20)
+  Delivery_Mark   String?  @db.VarChar(15)
+  Coefficient     Float?
+  For_Order       Boolean? @db.Bit(1)
+  For_Procure     Boolean? @db.Bit(1)
+  Delivery_Remark String?  @db.VarChar(50)
 }
 
 model tm_specific {
-  Specific_CD       String  @id @db.VarChar(2)
-  Specific_Name     String? @db.VarChar(20)
-  Specific_Abb      String? @db.VarChar(15)
-  Specific_Symbol   String? @db.VarChar(10)
-  Specific_Mark     String? @db.VarChar(5)
-  Specific_Remark   String? @db.VarChar(20)
+  Specific_CD     String  @id @db.VarChar(2)
+  Specific_Name   String? @db.VarChar(20)
+  Specific_Abb    String? @db.VarChar(15)
+  Specific_Symbol String? @db.VarChar(10)
+  Specific_Mark   String? @db.VarChar(5)
+  Specific_Remark String? @db.VarChar(20)
 }
 
+model tm_pc_progress {
+  Pc_Progress_CD     String  @id @db.VarChar(2)
+  Pc_Progress_Name   String? @db.VarChar(25)
+  Pc_Progress_Abb    String? @db.VarChar(15)
+  Pc_Progress_Symbol String? @db.VarChar(5)
+  Pc_Progress_Mark   String? @db.VarChar(5)
+  Pc_Progress_Remark String? @db.VarChar(50)
+}
 
+model tm_inoutside {
+  InOutside_CD     String  @id @db.VarChar(2)
+  InOutside_Name   String? @db.VarChar(5)
+  InOutside_Abb    String? @db.VarChar(5)
+  InOutside_Symbol String? @db.VarChar(5)
+  InOutside_Mark   String? @db.VarChar(5)
+  InOutside_Remark String? @db.VarChar(20)
+}
+
+model tm_vendor {
+  Vendor_CD      String   @id @db.VarChar(20) // ฟิลด์นี้เป็นไอดีหลัก
+  Vendor_Name    String?  @db.VarChar(50)
+  Vendor_Name2   String?  @db.VarChar(50)
+  Vendor_Abb     String?  @db.VarChar(50)
+  Vendor_Add     String?  @db.VarChar(50)
+  Vendor_Add2    String?  @db.VarChar(50)
+  Vendor_Add3    String?  @db.VarChar(50)
+  Vendor_Contact String?  @db.VarChar(50)
+  Vendor_TEL     String?  @db.VarChar(30)
+  Posting_Group  String?  @db.VarChar(10)
+  Payment_CD     String?  @db.VarChar(10)
+  Blocked        Boolean? @db.Bit(1)
+  VAT_Reg_No     String?  @db.VarChar(20)
+  Branch_No      String?  @db.VarChar(5)
+  Nationality    String?  @db.VarChar(30)
+  Vendor_Group   String?  @db.VarChar(30)
+  Vendor_Remark  String?  @db.VarChar(50)
+}
 
 model TM_User {
-    User_ID     String   @id
-    User_Name   String? // ชื่อผู้ใช้
-    User_Abb    String? // ชื่อย่อผู้ใช้
-    User_Pass   String? // รหัสผ่านผู้ใช้
-    User_Remark String? // หมายเหตุผู้ใช้
-    F0100       Boolean? @default(false)
-    F0101       Boolean? @default(false)
-    F0102       Boolean? @default(false)
-    F0103       Boolean? @default(false)
-    F0104       Boolean? @default(false)
-    F0105       Boolean? @default(false)
-    F0106       Boolean? @default(false)
-    F0107       Boolean? @default(false)
-    F0108       Boolean? @default(false)
-    F0109       Boolean? @default(false)
-    F0110       Boolean? @default(false)
-    F0112       Boolean? @default(false)
-    F0113       Boolean? @default(false)
-    F0114       Boolean? @default(false)
-    F0115       Boolean? @default(false)
-    F0116       Boolean? @default(false)
-    F0117       Boolean? @default(false)
-    F0118       Boolean? @default(false)
-    F0119       Boolean? @default(false)
-    F0120       Boolean? @default(false)
-    F0200       Boolean? @default(false)
-    F0201       Boolean? @default(false)
-    F0202       Boolean? @default(false)
-    F0203       Boolean? @default(false)
-    F0204       Boolean? @default(false)
-    F0205       Boolean? @default(false)
-    F0206       Boolean? @default(false)
-    F0207       Boolean? @default(false)
-    F0208       Boolean? @default(false)
-    F0209       Boolean? @default(false)
-    F0210       Boolean? @default(false)
-    F0211       Boolean? @default(false)
-    F0212       Boolean? @default(false)
-    F0213       Boolean? @default(false)
-    F0214       Boolean? @default(false)
-    F0215       Boolean? @default(false)
-    F0216       Boolean? @default(false)
-    F0217       Boolean? @default(false)
-    F0218       Boolean? @default(false)
-    F0219       Boolean? @default(false)
-    F0220       Boolean? @default(false)
-    F0300       Boolean? @default(false)
-    F0301       Boolean? @default(false)
-    F0302       Boolean? @default(false)
-    F0303       Boolean? @default(false)
-    F0304       Boolean? @default(false)
-    F0305       Boolean? @default(false)
-    F0306       Boolean? @default(false)
-    F0307       Boolean? @default(false)
-    F0308       Boolean? @default(false)
-    F0309       Boolean? @default(false)
-    F0310       Boolean? @default(false)
-    F0311       Boolean? @default(false)
-    F0312       Boolean? @default(false)
-    F0313       Boolean? @default(false)
-    F0314       Boolean? @default(false)
-    F0315       Boolean? @default(false)
-    F0316       Boolean? @default(false)
-    F0317       Boolean? @default(false)
-    F0318       Boolean? @default(false)
-    F0319       Boolean? @default(false)
-    F0320       Boolean? @default(false)
-    F0400       Boolean? @default(false)
-    F0401       Boolean? @default(false)
-    F0402       Boolean? @default(false)
-    F0403       Boolean? @default(false)
-    F0404       Boolean? @default(false)
-    F0405       Boolean? @default(false)
-    F0406       Boolean? @default(false)
-    F0407       Boolean? @default(false)
-    F0408       Boolean? @default(false)
-    F0409       Boolean? @default(false)
-    F0410       Boolean? @default(false)
-    F0411       Boolean? @default(false)
-    F0412       Boolean? @default(false)
-    F0413       Boolean? @default(false)
-    F0414       Boolean? @default(false)
-    F0415       Boolean? @default(false)
-    F0416       Boolean? @default(false)
-    F0417       Boolean? @default(false)
-    F0418       Boolean? @default(false)
-    F0419       Boolean? @default(false)
-    F0420       Boolean? @default(false)
-    F0500       Boolean? @default(false)
-    F0501       Boolean? @default(false)
-    F0502       Boolean? @default(false)
-    F0503       Boolean? @default(false)
-    F0504       Boolean? @default(false)
-    F0505       Boolean? @default(false)
-    F0506       Boolean? @default(false)
-    F0507       Boolean? @default(false)
-    F0508       Boolean? @default(false)
-    F0509       Boolean? @default(false)
-    F0510       Boolean? @default(false)
-    F0511       Boolean? @default(false)
-    F0512       Boolean? @default(false)
-    F0513       Boolean? @default(false)
-    F0514       Boolean? @default(false)
-    F0515       Boolean? @default(false)
-    F0516       Boolean? @default(false)
-    F0517       Boolean? @default(false)
-    F0518       Boolean? @default(false)
-    F0519       Boolean? @default(false)
-    F0520       Boolean? @default(false)
-    F0600       Boolean? @default(false)
-    F0601       Boolean? @default(false)
-    F0602       Boolean? @default(false)
-    F0603       Boolean? @default(false)
-    F0604       Boolean? @default(false)
-    F0605       Boolean? @default(false)
-    F0606       Boolean? @default(false)
-    F0607       Boolean? @default(false)
-    F0608       Boolean? @default(false)
-    F0609       Boolean? @default(false)
-    F0610       Boolean? @default(false)
-    F0611       Boolean? @default(false)
-    F0612       Boolean? @default(false)
-    F0613       Boolean? @default(false)
-    F0614       Boolean? @default(false)
-    F0615       Boolean? @default(false)
-    F0616       Boolean? @default(false)
-    F0617       Boolean? @default(false)
-    F0618       Boolean? @default(false)
-    F0619       Boolean? @default(false)
-    F0620       Boolean? @default(false)
-    F0700       Boolean? @default(false)
-    F0701       Boolean? @default(false)
-    F0702       Boolean? @default(false)
-    F0703       Boolean? @default(false)
-    F0704       Boolean? @default(false)
-    F0705       Boolean? @default(false)
-    F0706       Boolean? @default(false)
-    F0707       Boolean? @default(false)
-    F0708       Boolean? @default(false)
-    F0709       Boolean? @default(false)
-    F0710       Boolean? @default(false)
-    F0711       Boolean? @default(false)
-    F0712       Boolean? @default(false)
-    F0713       Boolean? @default(false)
-    F0714       Boolean? @default(false)
-    F0715       Boolean? @default(false)
-    F0716       Boolean? @default(false)
-    F0717       Boolean? @default(false)
-    F0718       Boolean? @default(false)
-    F0719       Boolean? @default(false)
-    F0720       Boolean? @default(false)
-    F0800       Boolean? @default(false)
-    F0801       Boolean? @default(false)
-    F0802       Boolean? @default(false)
-    F0803       Boolean? @default(false)
-    F0804       Boolean? @default(false)
-    F0805       Boolean? @default(false)
-    F0806       Boolean? @default(false)
-    F0807       Boolean? @default(false)
-    F0808       Boolean? @default(false)
-    F0809       Boolean? @default(false)
-    F0810       Boolean? @default(false)
-    F0811       Boolean? @default(false)
-    F0812       Boolean? @default(false)
-    F0813       Boolean? @default(false)
-    F0814       Boolean? @default(false)
-    F0815       Boolean? @default(false)
-    F0816       Boolean? @default(false)
-    F0817       Boolean? @default(false)
-    F0818       Boolean? @default(false)
-    F0819       Boolean? @default(false)
-    F0820       Boolean? @default(false)
-    F0900       Boolean? @default(false)
-    F0901       Boolean? @default(false)
-    F0902       Boolean? @default(false)
-    F0903       Boolean? @default(false)
-    F0904       Boolean? @default(false)
-    F0905       Boolean? @default(false)
-    F0906       Boolean? @default(false)
-    F0907       Boolean? @default(false)
-    F0908       Boolean? @default(false)
-    F0909       Boolean? @default(false)
-    F0910       Boolean? @default(false)
-    F0911       Boolean? @default(false)
-    F0912       Boolean? @default(false)
-    F0913       Boolean? @default(false)
-    F0914       Boolean? @default(false)
-    F0915       Boolean? @default(false)
-    F0916       Boolean? @default(false)
-    F0917       Boolean? @default(false)
-    F0918       Boolean? @default(false)
-    F0919       Boolean? @default(false)
-    F0920       Boolean? @default(false)
-    F1000       Boolean?  @default(false)
-    F1001       Boolean?  @default(false)
-    F1002       Boolean?  @default(false)
-    F1003       Boolean?  @default(false)
-    F1004       Boolean?  @default(false)
-    F1005       Boolean?  @default(false)
-    F1006       Boolean?  @default(false)
-    F1007       Boolean?  @default(false)
-    F1008       Boolean?  @default(false)
-    F1009       Boolean?  @default(false)
-    F1010       Boolean?  @default(false)
-    F1011       Boolean?  @default(false)
-    F1012       Boolean?  @default(false)
-    F1013       Boolean?  @default(false)
-    F1014       Boolean?  @default(false)
-    F1015       Boolean?  @default(false)
-    F1016       Boolean?  @default(false)
-    F1017       Boolean?  @default(false)
-    F1018       Boolean?  @default(false)
-    F1019       Boolean?  @default(false)
-    F1020       Boolean?  @default(false)
+  User_ID     String   @id
+  User_Name   String? // ชื่อผู้ใช้
+  User_Abb    String? // ชื่อย่อผู้ใช้
+  User_Pass   String? // รหัสผ่านผู้ใช้
+  User_Remark String? // หมายเหตุผู้ใช้
+  F0100       Boolean? @default(false)
+  F0101       Boolean? @default(false)
+  F0102       Boolean? @default(false)
+  F0103       Boolean? @default(false)
+  F0104       Boolean? @default(false)
+  F0105       Boolean? @default(false)
+  F0106       Boolean? @default(false)
+  F0107       Boolean? @default(false)
+  F0108       Boolean? @default(false)
+  F0109       Boolean? @default(false)
+  F0110       Boolean? @default(false)
+  F0112       Boolean? @default(false)
+  F0113       Boolean? @default(false)
+  F0114       Boolean? @default(false)
+  F0115       Boolean? @default(false)
+  F0116       Boolean? @default(false)
+  F0117       Boolean? @default(false)
+  F0118       Boolean? @default(false)
+  F0119       Boolean? @default(false)
+  F0120       Boolean? @default(false)
+  F0200       Boolean? @default(false)
+  F0201       Boolean? @default(false)
+  F0202       Boolean? @default(false)
+  F0203       Boolean? @default(false)
+  F0204       Boolean? @default(false)
+  F0205       Boolean? @default(false)
+  F0206       Boolean? @default(false)
+  F0207       Boolean? @default(false)
+  F0208       Boolean? @default(false)
+  F0209       Boolean? @default(false)
+  F0210       Boolean? @default(false)
+  F0211       Boolean? @default(false)
+  F0212       Boolean? @default(false)
+  F0213       Boolean? @default(false)
+  F0214       Boolean? @default(false)
+  F0215       Boolean? @default(false)
+  F0216       Boolean? @default(false)
+  F0217       Boolean? @default(false)
+  F0218       Boolean? @default(false)
+  F0219       Boolean? @default(false)
+  F0220       Boolean? @default(false)
+  F0300       Boolean? @default(false)
+  F0301       Boolean? @default(false)
+  F0302       Boolean? @default(false)
+  F0303       Boolean? @default(false)
+  F0304       Boolean? @default(false)
+  F0305       Boolean? @default(false)
+  F0306       Boolean? @default(false)
+  F0307       Boolean? @default(false)
+  F0308       Boolean? @default(false)
+  F0309       Boolean? @default(false)
+  F0310       Boolean? @default(false)
+  F0311       Boolean? @default(false)
+  F0312       Boolean? @default(false)
+  F0313       Boolean? @default(false)
+  F0314       Boolean? @default(false)
+  F0315       Boolean? @default(false)
+  F0316       Boolean? @default(false)
+  F0317       Boolean? @default(false)
+  F0318       Boolean? @default(false)
+  F0319       Boolean? @default(false)
+  F0320       Boolean? @default(false)
+  F0400       Boolean? @default(false)
+  F0401       Boolean? @default(false)
+  F0402       Boolean? @default(false)
+  F0403       Boolean? @default(false)
+  F0404       Boolean? @default(false)
+  F0405       Boolean? @default(false)
+  F0406       Boolean? @default(false)
+  F0407       Boolean? @default(false)
+  F0408       Boolean? @default(false)
+  F0409       Boolean? @default(false)
+  F0410       Boolean? @default(false)
+  F0411       Boolean? @default(false)
+  F0412       Boolean? @default(false)
+  F0413       Boolean? @default(false)
+  F0414       Boolean? @default(false)
+  F0415       Boolean? @default(false)
+  F0416       Boolean? @default(false)
+  F0417       Boolean? @default(false)
+  F0418       Boolean? @default(false)
+  F0419       Boolean? @default(false)
+  F0420       Boolean? @default(false)
+  F0500       Boolean? @default(false)
+  F0501       Boolean? @default(false)
+  F0502       Boolean? @default(false)
+  F0503       Boolean? @default(false)
+  F0504       Boolean? @default(false)
+  F0505       Boolean? @default(false)
+  F0506       Boolean? @default(false)
+  F0507       Boolean? @default(false)
+  F0508       Boolean? @default(false)
+  F0509       Boolean? @default(false)
+  F0510       Boolean? @default(false)
+  F0511       Boolean? @default(false)
+  F0512       Boolean? @default(false)
+  F0513       Boolean? @default(false)
+  F0514       Boolean? @default(false)
+  F0515       Boolean? @default(false)
+  F0516       Boolean? @default(false)
+  F0517       Boolean? @default(false)
+  F0518       Boolean? @default(false)
+  F0519       Boolean? @default(false)
+  F0520       Boolean? @default(false)
+  F0600       Boolean? @default(false)
+  F0601       Boolean? @default(false)
+  F0602       Boolean? @default(false)
+  F0603       Boolean? @default(false)
+  F0604       Boolean? @default(false)
+  F0605       Boolean? @default(false)
+  F0606       Boolean? @default(false)
+  F0607       Boolean? @default(false)
+  F0608       Boolean? @default(false)
+  F0609       Boolean? @default(false)
+  F0610       Boolean? @default(false)
+  F0611       Boolean? @default(false)
+  F0612       Boolean? @default(false)
+  F0613       Boolean? @default(false)
+  F0614       Boolean? @default(false)
+  F0615       Boolean? @default(false)
+  F0616       Boolean? @default(false)
+  F0617       Boolean? @default(false)
+  F0618       Boolean? @default(false)
+  F0619       Boolean? @default(false)
+  F0620       Boolean? @default(false)
+  F0700       Boolean? @default(false)
+  F0701       Boolean? @default(false)
+  F0702       Boolean? @default(false)
+  F0703       Boolean? @default(false)
+  F0704       Boolean? @default(false)
+  F0705       Boolean? @default(false)
+  F0706       Boolean? @default(false)
+  F0707       Boolean? @default(false)
+  F0708       Boolean? @default(false)
+  F0709       Boolean? @default(false)
+  F0710       Boolean? @default(false)
+  F0711       Boolean? @default(false)
+  F0712       Boolean? @default(false)
+  F0713       Boolean? @default(false)
+  F0714       Boolean? @default(false)
+  F0715       Boolean? @default(false)
+  F0716       Boolean? @default(false)
+  F0717       Boolean? @default(false)
+  F0718       Boolean? @default(false)
+  F0719       Boolean? @default(false)
+  F0720       Boolean? @default(false)
+  F0800       Boolean? @default(false)
+  F0801       Boolean? @default(false)
+  F0802       Boolean? @default(false)
+  F0803       Boolean? @default(false)
+  F0804       Boolean? @default(false)
+  F0805       Boolean? @default(false)
+  F0806       Boolean? @default(false)
+  F0807       Boolean? @default(false)
+  F0808       Boolean? @default(false)
+  F0809       Boolean? @default(false)
+  F0810       Boolean? @default(false)
+  F0811       Boolean? @default(false)
+  F0812       Boolean? @default(false)
+  F0813       Boolean? @default(false)
+  F0814       Boolean? @default(false)
+  F0815       Boolean? @default(false)
+  F0816       Boolean? @default(false)
+  F0817       Boolean? @default(false)
+  F0818       Boolean? @default(false)
+  F0819       Boolean? @default(false)
+  F0820       Boolean? @default(false)
+  F0900       Boolean? @default(false)
+  F0901       Boolean? @default(false)
+  F0902       Boolean? @default(false)
+  F0903       Boolean? @default(false)
+  F0904       Boolean? @default(false)
+  F0905       Boolean? @default(false)
+  F0906       Boolean? @default(false)
+  F0907       Boolean? @default(false)
+  F0908       Boolean? @default(false)
+  F0909       Boolean? @default(false)
+  F0910       Boolean? @default(false)
+  F0911       Boolean? @default(false)
+  F0912       Boolean? @default(false)
+  F0913       Boolean? @default(false)
+  F0914       Boolean? @default(false)
+  F0915       Boolean? @default(false)
+  F0916       Boolean? @default(false)
+  F0917       Boolean? @default(false)
+  F0918       Boolean? @default(false)
+  F0919       Boolean? @default(false)
+  F0920       Boolean? @default(false)
+  F1000       Boolean? @default(false)
+  F1001       Boolean? @default(false)
+  F1002       Boolean? @default(false)
+  F1003       Boolean? @default(false)
+  F1004       Boolean? @default(false)
+  F1005       Boolean? @default(false)
+  F1006       Boolean? @default(false)
+  F1007       Boolean? @default(false)
+  F1008       Boolean? @default(false)
+  F1009       Boolean? @default(false)
+  F1010       Boolean? @default(false)
+  F1011       Boolean? @default(false)
+  F1012       Boolean? @default(false)
+  F1013       Boolean? @default(false)
+  F1014       Boolean? @default(false)
+  F1015       Boolean? @default(false)
+  F1016       Boolean? @default(false)
+  F1017       Boolean? @default(false)
+  F1018       Boolean? @default(false)
+  F1019       Boolean? @default(false)
+  F1020       Boolean? @default(false)
 }

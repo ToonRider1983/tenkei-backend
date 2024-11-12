@@ -16,6 +16,9 @@ const odquoteRoute = require("./src/routes/odquote-route");
 const odprogressRoute = require("./src/routes/odprogress-route");
 const priceRoute = require("./src/routes/price-route");
 const specificRoute = require("./src/routes/specific-route");
+const vendorRoute = require("./src/routes/vendor-route");
+const inoutsideRoute = require("./src/routes/inoutside-route");
+const pcprogressRoute = require("./src/routes/pcprogress-route");
 const logger = require('./src/middlewares/logger');
 
 const cors = require("cors");
@@ -42,6 +45,9 @@ app.use('/odquote', odquoteRoute);
 app.use('/odprogress', odprogressRoute);
 app.use('/price', priceRoute);
 app.use('/specific', specificRoute);
+app.use('/vendor', vendorRoute);
+app.use('/inoutside', inoutsideRoute);
+app.use('/pcprogress', pcprogressRoute);
 
 const PORT = process.env.PORT || "4000";
 app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
